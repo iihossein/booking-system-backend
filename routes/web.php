@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ExpertiseController;
+use App\Models\Expertise;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $ex = Expertise::find(1);
+    return view('welcome',compact('ex'));
 });
+
+
+// dont use this page
