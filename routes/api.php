@@ -22,3 +22,4 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('expertise')->group(function () {
     Route::get('/',[ExpertiseController::class,'index'])->name('expertise.index');
 });
+Route::get('/',[ExpertiseController::class,'index'])->name('expertise.index');

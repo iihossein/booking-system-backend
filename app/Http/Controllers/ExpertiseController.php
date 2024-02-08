@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ExpertiseResource;
 use App\Models\Expertise;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,8 @@ class ExpertiseController extends Controller
      */
     public function index()
     {
-        $expertises = Expertise::find(1);
-        $t = $expertises->getFirstMediaUrl('image');
-        
-        // return response()->json(json_encode($t));
+        $expertises = Expertise::all();
+        return ExpertiseResource::collection($expertises);
     }
 
     /**
