@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExpertiseController;
+use App\Http\Controllers\PageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('expertise')->group(function () {
     Route::get('/',[ExpertiseController::class,'index'])->name('expertise.index');
 });
-Route::get('/',[ExpertiseController::class,'index'])->name('expertise.index');
+
+
+// Pages
+Route::get('/',[PageController::class,'home'])->name('home');
