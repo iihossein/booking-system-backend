@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\PageController;
 use Illuminate\Http\Request;
@@ -22,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('expertise')->group(function () {
     Route::get('/',[ExpertiseController::class,'index'])->name('expertise.index');
+    Route::get('/show/{id}',[ExpertiseController::class,'show'])->name('expertise.show');
+});
+Route::prefix('doctor')->group(function () {
+    Route::get('/',[DoctorController::class,'index'])->name('doctor.index');
+    Route::get('/show/{id}',[DoctorController::class,'show'])->name('doctor.show');
+    Route::delete('/destroy/{id}',[DoctorController::class,'destroy'])->name('doctor.destroy');
 });
 
 

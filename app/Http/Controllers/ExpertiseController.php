@@ -38,7 +38,8 @@ class ExpertiseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $expertise = Expertise::findOrFail($id);
+        return new ExpertiseResource($expertise);
     }
 
     /**
@@ -62,6 +63,10 @@ class ExpertiseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $expertise = Expertise::findOrFail($id);
+        $expertise->destroy($id);
+        return json_encode([
+               'messages' => 'تخصص مورد نظر با موفقیت حذف شد.'
+        ]);
     }
 }
