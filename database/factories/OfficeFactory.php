@@ -18,7 +18,7 @@ class OfficeFactory extends Factory
     public function definition(): array
     {
         return [
-            'doctor_id' => Doctor::factory(), // از فکتوری Doctor برای ایجاد ارتباط استفاده می کنیم
+            'doctor_id' => Doctor::inRandomOrder()->first()->id,
             'address' => $this->faker->address(),
             'phone' => $this->faker->phoneNumber(),
             'days_of_week' => $this->faker->randomElement(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']),

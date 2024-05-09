@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('offices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('doctor_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->longText('address');
             $table->string('phone');
             $table->string('days_of_week');

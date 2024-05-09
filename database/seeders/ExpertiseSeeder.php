@@ -65,16 +65,7 @@ class ExpertiseSeeder extends Seeder
 
 
 
-        // foreach ($expertises as $expertise) {
-        //     $imagePath = 'images/expertises/' . $expertise['image'];
-        //     Storage::disk('public')->put($imagePath, file_get_contents(public_path('images/' . $expertise['image'])));
-
-        //     Expertise::create([
-        //         'name' => $expertise['name'],
-        //         'slug' => $expertise['slug'],
-        //         'image' => $imagePath,
-        //     ]);
-        // }
+        
 
         foreach ($expertises as $expertise) {
             $expertiseModel = Expertise::create([

@@ -14,9 +14,11 @@ class PageController extends Controller
     {
         $doctors = Doctor::all();
         $expertises = Expertise::all();
+        $best_doctors = Doctor::inRandomOrder()->limit(20)->get();
         return [
             'expertises' => ExpertiseResource::collection($expertises),
-            'doctors' => DoctorResource::collection($doctors)
+            'doctors' => DoctorResource::collection($doctors),
+            'best_doctors' => DoctorResource::collection($best_doctors)
         ];
     }
 }

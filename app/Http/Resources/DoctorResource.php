@@ -26,7 +26,6 @@ class DoctorResource extends JsonResource
             'gender' => $this->gender,
             'birthday' => $this->birthday,
             'created_at' => $this->created_at,
-            // مشابه این تا اطلاعات لازم دیگر
         ];
     }
 }
