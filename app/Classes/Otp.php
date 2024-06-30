@@ -1,0 +1,166 @@
+<?php
+
+namespace app\Classes;
+
+use Carbon\Carbon;
+use App\Models\User;
+use Cryptommer\Smsir\Smsir;
+use Cryptommer\Smsir\Objects\Parameters;
+
+
+class Otp
+{
+    public function sendOtp($phone)
+    {
+        $check_otp = User::where('phone', $phone)->first();
+        $code = rand(10000, 99999);
+
+
+
+        // if otp already exists in database
+        if ($check_otp) {
+
+            // check last request time
+            // $last_request = Carbon::parse($check_otp->updated_at);
+
+
+            // check time difference
+            // $diff_from_now_sec = $last_request->diffInSeconds(Carbon::now());
+
+            // check how many times user requrested
+            // 2 minutes if less than 5 times
+            // 5 minutes if more than 5 times
+            // if ($check_otp->try <= 5) {
+            //     $wait_time = 120;
+            // } else {
+            //     $wait_time = 300;
+            // }
+
+            // if user waited
+            // if ($diff_from_now_sec >= $wait_time) {
+
+            // save new otp code in database
+            $check_otp->code = $code;
+            // $check_otp->try = $check_otp->try + 1;
+            $check_otp->save();
+
+            // $mobile = $request->phone;
+            $name = "CODE";
+            $value = rand(1000, 9999);
+            $parameter = new Parameters($name, $value);
+            $parameters = array($parameter);
+            $send = Smsir::Send();
+            $templateId = 100000;
+            $send->Verify($phone, $templateId, $parameters);
+
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'description' => 'code sent',
+                    'message' => 'کد تایید ارسال شد',
+                    // 'code' => $code,
+                ],
+                200
+            );
+            // } else {
+            //     // if user did not wait and requested again
+            //     return response()->json(
+            //         [
+            //             'status' => 'error',
+            //             'description' => 'too many requests - wait',
+            //             'time' => $wait_time - $diff_from_now_sec,
+            //             'message' => 'لطفا ' . $wait_time - $diff_from_now_sec . ' ثانیه صبر کنید',
+            //         ],
+            //         400
+            //     );
+            // }
+        } else {
+
+
+            // if there is no otp saved in database for this user
+            $otp = new User();
+            $otp->phone = $phone;
+            $otp->code = $code;
+            // $otp->try = 1;
+            $otp->save();
+
+            $name = "CODE";
+            $value = rand(1000, 9999);
+            $parameter = new Parameters($name, $value);
+            $parameters = array($parameter);
+            $send = Smsir::Send();
+            $templateId = 100000;
+            $send->Verify($phone, $templateId, $parameters);
+
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'description' => 'code',
+                    'message' => 'کد تایید ارسال شد',
+                    // 'code' => $code,
+                ],
+                200
+            );
+        }
+    }
+
+
+
+    // check if user otp is correct and not expired
+    public function checkOtp($phone, $code)
+    {
+        $otp = User::where([['phone', $phone], ['code', $code]])->first();
+
+        if ($otp) {
+
+            // if ($this->checkExpiredOtp($otp->updated_at)) {
+            //     return response()->json(
+            //         [
+            //             'status' => 'error',
+            //             'description' => 'code expired',
+            //             'message' => 'کد تایید منقضی شده است',
+            //             // 'code' => $code,
+            //         ],
+            //         400
+            //     );
+            // }
+
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'description' => 'correct code',
+                    'message' => 'کد تایید درست وارد شده',
+                ],
+                200
+            );
+        } else {
+            return response()->json(
+                [
+                    'status' => 'error',
+                    'description' => 'code not found',
+                    'message' => 'کد تایید اشتباه وارد شده است',
+                ],
+                400
+            );
+        }
+    }
+
+
+
+    // code is expired after 30 mins
+    // public function checkExpiredOtp($updated_at)
+    // {
+    //     $last_request_time = Carbon::parse($updated_at);
+    //     $diff_from_now_sec = $last_request_time->diffInSeconds(Carbon::now());
+
+
+    //     // change here for different expiration time
+    //     if ($diff_from_now_sec >= 1800) {
+    //         // expired
+    //         return true;
+    //     } else {
+    //         // not expired
+    //         return false;
+    //     }
+    // }
+}

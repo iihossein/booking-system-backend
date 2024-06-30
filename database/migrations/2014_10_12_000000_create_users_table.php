@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -19,6 +18,7 @@ return new class extends Migration
             $table->string('national_code');
             $table->boolean('gender')->comment("[0] => man | [1] => women");
             $table->timestamp('birthday');
+            $table->unsignedInteger('code')->nullable();
             $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
