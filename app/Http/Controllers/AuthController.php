@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Classes\Otp;
+use App\Classes\Otp;
 use App\Models\User;
 use app\Classes\Login;
 use app\Classes\Register;
@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     use HttpResponses;
-    public function authenticate(Request $request)
+    public function sendCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'phone' => ['required', 'regex:/^09(1[0-9]|9[0-2]|2[0-2]|0[1-5]|41|3[0,3,5-9])\d{7}$/'],
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return $this->errorResponse('', $validator->errors(), 'اطلاعات ارسال شده درست نبوده است', 400);
         }
 
         $user = User::where('phone', $request->phone)->first();
@@ -30,9 +30,10 @@ class AuthController extends Controller
 
         if ($user) {
             if ($user->status == 0) {
-                return response()->json(['status' => 'error', 'description' => 'user status'], 400);
+                return $this->errorResponse('', 'user status', 'حساب کاربری شما محدود شده است', 400);
+
             } else {
-                return response()->json(['status' => 'success', 'description' => 'password'], 200);
+                return $this->successResponse('', 'password', 'لطفا رمز خود را وارد کنید');
             }
         } else {
             $otp_class = new Otp();
@@ -44,12 +45,12 @@ class AuthController extends Controller
     public function checkCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'code' => ['required', 'min:5', 'integer'],
+            'code' => ['required', 'integer'],
             'phone' => ['required', 'regex:/^09(1[0-9]|9[0-2]|2[0-2]|0[1-5]|41|3[0,3,5-9])\d{7}$/'],
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return $this->errorResponse('', $validator->errors(), 'اطلاعات ارسال شده درست نبوده است', 400);
         }
 
         $otp_class = new Otp();
@@ -60,7 +61,7 @@ class AuthController extends Controller
             return $this->successResponse('check code', 'good code', 'کد تایید وارد شده صحیح است.');
         } else {
 
-            return $this->error('check code', 'wrong code', 'کد تایید وارد شده اشتباه است.');
+            return $this->errorResponse('check code', 'wrong code', 'کد تایید وارد شده اشتباه است.', 400);
         }
     }
 
@@ -72,7 +73,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return $this->errorResponse('', $validator->errors(), 'اطلاعات ارسال شده درست نبوده است', 400);
         }
 
         $user = User::where('phone', $request->phone)->first();
@@ -82,28 +83,9 @@ class AuthController extends Controller
             $login_class = new Login;
             $token = $login_class->makeToken($user->phone);
 
-
-            return response()->json(
-                [
-                    'status' => 'success',
-                    'step' => 'check password',
-                    'description' => 'good password',
-                    'message' => '',
-                    'token' => $token,
-                ],
-                200
-            );
+            return $this->successResponse('check password', 'good password', 'رمز وارد شده درست است');
         } else {
-
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'step' => 'check password',
-                    'description' => 'wrong password',
-                    'message' => 'رمز عبور اشتباه وارد شده است.',
-                ],
-                400
-            );
+            return $this->errorResponse('check password', 'wrong password', 'رمز عبور به اشتباه وارد شده است', 400);
         }
     }
     public function registerUser(Request $request)
@@ -118,31 +100,27 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return $this->errorResponse('', $validator->errors(), 'اطلاعات ارسال شده درست نبوده است', 400);
         }
 
         $otp_class = new Otp();
         $check = $otp_class->checkOtp($request->phone, $request->code);
 
         if (!$check) {
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'step' => 'register',
-                    'description' => 'register',
-                    'message' => 'لطفا شماره موبایل خود را تایید کنید.',
-                ],
-                400
-            );
+            return $this->errorResponse('register', 'register', 'لطفا شماره موبایل خود را تایید کنید.', 400);
         }
 
         $register_class = new Register();
 
         $registered_user = $register_class->registerNewUser(
+            $request->first_name,
+            $request->last_name,
+            $request->phone,
             $request->password,
-            $request->name,
-            $request->family_name,
-            $request->phone
+            $request->national_code,
+            $request->gender,
+            $request->birthday,
+
         );
 
         if ($registered_user) {
@@ -151,7 +129,7 @@ class AuthController extends Controller
             $login_class = new Login;
             $token = $login_class->makeToken($request->phone);
 
-
+            // باید تغییر کند ولی کار میکند
             return response()->json(
                 [
                     'status' => 'success',
@@ -163,15 +141,7 @@ class AuthController extends Controller
                 200
             );
         } else {
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'step' => 'register',
-                    'description' => 'registration failed',
-                    'message' => 'خطا در ایجاد حساب کاربری',
-                ],
-                400
-            );
+            return $this->errorResponse('register', 'registration failed', 'خطا در ایجاد حساب کاربری', 400);
         }
     }
 
@@ -253,15 +223,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-
-        return response()->json(
-            [
-                'status' => 'success',
-                'step' => 'logout',
-                'description' => 'logged out',
-                'message' => '',
-            ],
-            200
-        );
+        return $this->successResponse('logout', 'logged out', 'با موفقیت از حساب خود خارج شدید');
     }
 }

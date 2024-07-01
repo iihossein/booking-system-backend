@@ -40,7 +40,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 
 
 // Auth
-Route::post('auth/authenticate', [AuthController::class, 'authenticate']);
+Route::post('auth/sendCode', [AuthController::class, 'sendCode']);
 Route::post('auth/checkCode', [AuthController::class, 'checkCode']);
 Route::post('auth/checkPassword', [AuthController::class, 'checkPassword']);
 Route::post('auth/registerUser', [AuthController::class, 'registerUser']);

@@ -16,7 +16,7 @@ class Otp
     public function sendOtp($phone)
     {
         $check_otp = User::where('phone', $phone)->first();
-        $code = rand(10000, 99999);
+        $code = mt_rand(1000, 9999);
 
 
 
@@ -47,14 +47,13 @@ class Otp
             // $check_otp->try = $check_otp->try + 1;
             $check_otp->save();
 
-            // $mobile = $request->phone;
             $name = "CODE";
-            $value = rand(1000, 9999);
-            $parameter = new Parameters($name, $value);
+            $parameter = new Parameters($name, $code);
             $parameters = array($parameter);
             $send = Smsir::Send();
             $templateId = 100000;
-            $send->Verify($phone, $templateId, $parameters);
+            $tmp = $send->Verify($phone, $templateId, $parameters);
+            ddd($tmp);
             return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
 
             // } else {
@@ -76,12 +75,10 @@ class Otp
             $otp = new User();
             $otp->phone = $phone;
             $otp->code = $code;
-            // $otp->try = 1;
             $otp->save();
 
             $name = "CODE";
-            $value = rand(1000, 9999);
-            $parameter = new Parameters($name, $value);
+            $parameter = new Parameters($name, $code);
             $parameters = array($parameter);
             $send = Smsir::Send();
             $templateId = 100000;

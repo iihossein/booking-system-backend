@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'phone' => $this->faker->phoneNumber,
-            // 'password' => Hash::make(static::$defaultPassword),
+            'password' => Hash::make('12345678'),
             'national_code' => $this->faker->unique()->numberBetween(1000000000, 9999999999),
             'gender' => $this->faker->randomElement([0, 1]),
             'birthday' => $this->faker->dateTimeBetween('-50 years', '-20 years'),

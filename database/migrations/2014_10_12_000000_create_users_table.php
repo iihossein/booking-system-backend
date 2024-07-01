@@ -14,9 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('password')->nullable();
             $table->string('phone')->unique();
             $table->string('national_code')->nullable();
-            $table->boolean('gender')->comment("[0] => man | [1] => women");
+            $table->boolean('gender')->comment("[0] => man | [1] => women")->nullable();
             $table->timestamp('birthday')->nullable();
             $table->unsignedInteger('code')->nullable();
             $table->boolean('status')->default(1);
