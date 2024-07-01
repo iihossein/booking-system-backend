@@ -2,6 +2,7 @@
 
 namespace app\Classes;
 
+use App\Traits\HttpResponses;
 use Carbon\Carbon;
 use App\Models\User;
 use Cryptommer\Smsir\Smsir;
@@ -10,6 +11,8 @@ use Cryptommer\Smsir\Objects\Parameters;
 
 class Otp
 {
+    use HttpResponses;
+
     public function sendOtp($phone)
     {
         $check_otp = User::where('phone', $phone)->first();
@@ -52,16 +55,8 @@ class Otp
             $send = Smsir::Send();
             $templateId = 100000;
             $send->Verify($phone, $templateId, $parameters);
+            return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
 
-            return response()->json(
-                [
-                    'status' => 'success',
-                    'description' => 'code sent',
-                    'message' => 'کد تایید ارسال شد',
-                    // 'code' => $code,
-                ],
-                200
-            );
             // } else {
             //     // if user did not wait and requested again
             //     return response()->json(
@@ -91,16 +86,7 @@ class Otp
             $send = Smsir::Send();
             $templateId = 100000;
             $send->Verify($phone, $templateId, $parameters);
-
-            return response()->json(
-                [
-                    'status' => 'success',
-                    'description' => 'code',
-                    'message' => 'کد تایید ارسال شد',
-                    // 'code' => $code,
-                ],
-                200
-            );
+            return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
         }
     }
 
@@ -124,24 +110,9 @@ class Otp
             //         400
             //     );
             // }
-
-            return response()->json(
-                [
-                    'status' => 'success',
-                    'description' => 'correct code',
-                    'message' => 'کد تایید درست وارد شده',
-                ],
-                200
-            );
+            return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
         } else {
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'description' => 'code not found',
-                    'message' => 'کد تایید اشتباه وارد شده است',
-                ],
-                400
-            );
+            return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
         }
     }
 

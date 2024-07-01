@@ -6,6 +6,7 @@ use app\Classes\Otp;
 use App\Models\User;
 use app\Classes\Login;
 use app\Classes\Register;
+use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    use HttpResponses;
     public function authenticate(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -55,27 +57,10 @@ class AuthController extends Controller
 
 
         if ($check_otp) {
-            return response()->json(
-                [
-                    'status' => 'success',
-                    'step' => 'check code',
-                    'description' => 'good code',
-                    'message' => 'کد تایید وارد شده صحیح است.',
-                ],
-                200
-            );
+            return $this->successResponse('check code', 'good code', 'کد تایید وارد شده صحیح است.');
         } else {
 
-
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'step' => 'check code',
-                    'description' => 'wrong code',
-                    'message' => 'کد تایید وارد شده اشتباه است.',
-                ],
-                400
-            );
+            return $this->error('check code', 'wrong code', 'کد تایید وارد شده اشتباه است.');
         }
     }
 
