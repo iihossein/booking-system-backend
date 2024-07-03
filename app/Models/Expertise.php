@@ -11,14 +11,15 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Expertise extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
+    protected $fillable = [
+        'name',
+    ];
 
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('image')
             ->singleFile();
     }
-
-    protected $fillable = ['name'];
 
 
     public function doctors(): HasMany

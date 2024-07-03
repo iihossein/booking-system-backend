@@ -18,17 +18,9 @@ class ExpertiseController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(request $request)
     {
         //
     }
@@ -40,14 +32,6 @@ class ExpertiseController extends Controller
     {
         $expertise = Expertise::findOrFail($id);
         return new ExpertiseResource($expertise);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**
@@ -65,8 +49,9 @@ class ExpertiseController extends Controller
     {
         $expertise = Expertise::findOrFail($id);
         $expertise->destroy($id);
+
         return json_encode([
-               'messages' => 'تخصص مورد نظر با موفقیت حذف شد.'
+            'messages' => 'تخصص مورد نظر با موفقیت حذف شد.'
         ]);
     }
 }

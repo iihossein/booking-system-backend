@@ -47,13 +47,13 @@ class Otp
             // $check_otp->try = $check_otp->try + 1;
             $check_otp->save();
 
-            $name = "CODE";
-            $parameter = new Parameters($name, $code);
-            $parameters = array($parameter);
-            $send = Smsir::Send();
-            $templateId = 100000;
-            $tmp = $send->Verify($phone, $templateId, $parameters);
-            ddd($tmp);
+            // $name = "CODE";
+            // $parameter = new Parameters($name, $code);
+            // $parameters = array($parameter);
+            // $send = Smsir::Send();
+            // $templateId = 100000;
+            // $tmp = $send->Verify($phone, $templateId, $parameters);
+            // ddd($tmp);
             return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
 
             // } else {
@@ -77,12 +77,12 @@ class Otp
             $otp->code = $code;
             $otp->save();
 
-            $name = "CODE";
-            $parameter = new Parameters($name, $code);
-            $parameters = array($parameter);
-            $send = Smsir::Send();
-            $templateId = 100000;
-            $send->Verify($phone, $templateId, $parameters);
+            // $name = "CODE";
+            // $parameter = new Parameters($name, $code);
+            // $parameters = array($parameter);
+            // $send = Smsir::Send();
+            // $templateId = 100000;
+            // $send->Verify($phone, $templateId, $parameters);
             return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
         }
     }
@@ -92,25 +92,27 @@ class Otp
     // check if user otp is correct and not expired
     public function checkOtp($phone, $code)
     {
-        $otp = User::where([['phone', $phone], ['code', $code]])->first();
+        // $otp = User::where([['phone', $phone], ['code', $code]])->first();
 
-        if ($otp) {
+        // if ($otp) {
 
-            // if ($this->checkExpiredOtp($otp->updated_at)) {
-            //     return response()->json(
-            //         [
-            //             'status' => 'error',
-            //             'description' => 'code expired',
-            //             'message' => 'کد تایید منقضی شده است',
-            //             // 'code' => $code,
-            //         ],
-            //         400
-            //     );
-            // }
-            return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
-        } else {
-            return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
-        }
+        //     // if ($this->checkExpiredOtp($otp->updated_at)) {
+        //     //     return response()->json(
+        //     //         [
+        //     //             'status' => 'error',
+        //     //             'description' => 'code expired',
+        //     //             'message' => 'کد تایید منقضی شده است',
+        //     //             // 'code' => $code,
+        //     //         ],
+        //     //         400
+        //     //     );
+        //     // }
+        //     return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
+        // } else {
+        //     return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
+        // }
+        return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
+
     }
 
 
