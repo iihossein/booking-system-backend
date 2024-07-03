@@ -3,15 +3,15 @@ namespace App\Traits;
 
 trait HttpResponses
 {
-    protected function successResponse($step = null, $description, $message = null, $code = 200)
+    protected function successResponse($description, $message = null, $token = null, $code = 200)
     {
-        if ($step) {
+        if ($token) {
             return response()->json(
                 [
                     'status' => 'success',
-                    'step' => $step,
                     'description' => $description,
-                    'message' => $message
+                    'message' => $message,
+                    'token' => $token
                 ],
                 $code
             );
@@ -27,27 +27,15 @@ trait HttpResponses
         }
 
     }
-    protected function errorResponse($step = null, $description, $message = null, $code)
+    protected function errorResponse($description, $message = null, $code)
     {
-        if ($step) {
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'step' => $step,
-                    'description' => $description,
-                    'message' => $message
-                ],
-                $code
-            );
-        } else {
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'description' => $description,
-                    'message' => $message
-                ],
-                $code
-            );
-        }
+        return response()->json(
+            [
+                'status' => 'error',
+                'description' => $description,
+                'message' => $message
+            ],
+            $code
+        );
     }
 }

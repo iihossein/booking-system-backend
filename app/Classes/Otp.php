@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Classes;
+namespace App\Classes;
 
 use App\Traits\HttpResponses;
 use Carbon\Carbon;
@@ -54,7 +54,7 @@ class Otp
             // $templateId = 100000;
             // $tmp = $send->Verify($phone, $templateId, $parameters);
             // ddd($tmp);
-            return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
+            return $this->successResponse('code sent', 'کد تایید ارسال شد');
 
             // } else {
             //     // if user did not wait and requested again
@@ -83,7 +83,7 @@ class Otp
             // $send = Smsir::Send();
             // $templateId = 100000;
             // $send->Verify($phone, $templateId, $parameters);
-            return $this->successResponse('', 'code sent', 'کد تایید ارسال شد');
+            return $this->successResponse('code sent', 'کد تایید ارسال شد');
         }
     }
 
@@ -111,7 +111,7 @@ class Otp
         // } else {
         //     return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
         // }
-        return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
+        return $this->successResponse('correct code', 'کد تایید درست وارد شده');
 
     }
 
