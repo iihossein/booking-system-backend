@@ -46,13 +46,15 @@ Route::post('auth/checkPassword', [AuthController::class, 'checkPassword']);
 Route::post('auth/registerUser', [AuthController::class, 'registerUser']);
 Route::post('auth/changePassword', [AuthController::class, 'changePassword']);
 Route::post('auth/resetPassword', [AuthController::class, 'resetPassword']);
+
+
+
 Route::post('auth/logout/{phone}', [AuthController::class, 'logout']);
 
 
 
 
 // Protected routes
-// Route::group(['middleware' => ['auth:sanctum']], function () {
-//     Route::post('/logout', [AuthController::class, 'logout']);
-//     Route::resource('/tasks', TasksController::class);
-// });
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+});

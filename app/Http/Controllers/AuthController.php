@@ -212,11 +212,10 @@ class AuthController extends Controller
         }
     }
 
-    public function logout($phone)
+    public function logout()
     {
-        $user = User::where('phone', $phone)->first();
-        $user->tokens()->delete();
-        // Auth::user()->currentAccessToken()->delete();
+        $user = request()->user('sanctum');
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
         return $this->successResponse('logged out', 'با موفقیت از حساب خود خارج شدید');
     }
 }
