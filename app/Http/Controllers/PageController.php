@@ -18,7 +18,7 @@ class PageController extends Controller
         return [
             'expertises' => ExpertiseResource::collection($expertises),
             'doctors' => DoctorResource::collection($doctors),
-            'best_doctors' => DoctorResource::collection($best_doctors)
+            'bestDoctors' => DoctorResource::collection($best_doctors)
         ];
     }
 }

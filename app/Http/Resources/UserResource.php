@@ -16,16 +16,16 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+            'firstName' => $this->first_name,
+            'lastName' => $this->last_name,
             'phone' => $this->phone,
-            'national_code' => $this->national_code,
+            'nationalCode' => $this->national_code,
             'gender' => $this->gender == 0 ? 'man' : 'woman',
             'birthday' => $this->birthday,
             'code' => $this->code,
             'status' => $this->status == 1 ? 'active' : 'inactive',
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
         ];
     }
 }

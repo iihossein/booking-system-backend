@@ -17,12 +17,12 @@ class DoctorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'expertise_id' => $this->expertise_id,
-            'date_start_treatment' => $this->date_start_treatment,
-            'is_active' => $this->is_active,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'userId' => $this->user_id,
+            'expertiseId' => $this->expertise_id,
+            'dateStartTreatment' => $this->date_start_treatment,
+            'isActive' => $this->is_active,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
             // اطلاعات کاربر از جدول users
             'user' => new UserResource($this->user),
             // اطلاعات تخصص از جدول expertise
