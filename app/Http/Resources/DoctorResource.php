@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DoctorResource extends JsonResource
@@ -16,16 +17,16 @@ class DoctorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'phone' => $this->phone,
-            'national_code' => $this->national_code,
+            'user_id' => $this->user_id,
             'expertise_id' => $this->expertise_id,
-            'code' => $this->code,
             'date_start_treatment' => $this->date_start_treatment,
-            'gender' => $this->gender,
-            'birthday' => $this->birthday,
+            'is_active' => $this->is_active,
             'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            // اطلاعات کاربر از جدول users
+            'user' => new UserResource($this->user),
+            // اطلاعات تخصص از جدول expertise
+            'expertise' => new ExpertiseResource($this->expertise),
         ];
     }
 }
