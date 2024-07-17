@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'lastName' => $this->last_name,
             'phone' => $this->phone,
             'nationalCode' => $this->national_code,
-            'gender' => $this->gender == 0 ? 'man' : 'woman',
+            'gender' => $this->gender == 0 ? 'مرد' : 'زن',
             'birthday' => $this->birthday,
             'code' => $this->code,
             'status' => $this->status == 1 ? 'active' : 'inactive',

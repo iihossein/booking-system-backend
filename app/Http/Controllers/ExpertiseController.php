@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ExpertiseResource;
 use App\Models\Expertise;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ExpertiseController extends Controller
 {
+
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/expertise",
+     *     tags={"Expertises"},
+     *     summary="Get all expertises",
+     *     description="Get all expertises",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         
+     *     )
+     * )
      */
     public function index()
     {
@@ -26,7 +40,50 @@ class ExpertiseController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/api/expertise/{id}",
+     *     tags={"Expertises"},
+     *     summary="Get Expertise by ID",
+     *     description="Retrieve an expertise by its ID",
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         description="Expertise ID",
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="expertise",
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="name",
+     *                         type="string",
+     *                         example="Expertise Name"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Not Found"
+     *     )
+     * )
      */
     public function show(string $id)
     {
@@ -43,7 +100,38 @@ class ExpertiseController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/api/expertise/{id}",
+     *     tags={"Expertises"},
+     *     summary="Delete Expertise by ID",
+     *     description="Delete an expertise by its ID",
+     *     security={{"bearer_token":{}}},
+     *     @OA\Parameter(
+     *         description="Expertise ID",
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="messages",
+     *                 type="string",
+     *                 example="تخصص مورد نظر با موفقیت حذف شد."
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Not Found"
+     *     )
+     * )
      */
     public function destroy(string $id)
     {

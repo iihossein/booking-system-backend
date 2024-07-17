@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\ExpertiseController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\SmsController;
-use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SmsController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\ExpertiseController;
 use Symfony\Component\HttpKernel\Controller\ErrorController;
 
 
@@ -17,17 +18,17 @@ use Symfony\Component\HttpKernel\Controller\ErrorController;
 
 Route::prefix('expertise')->group(function () {
     Route::get('/', [ExpertiseController::class, 'index'])->name('expertise.index');
-    Route::get('/show/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
+    Route::get('/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
 });
 Route::prefix('doctor')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
-    Route::get('/show/{id}', [DoctorController::class, 'show'])->name('doctor.show');
-    Route::delete('/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+    Route::get('/{id}', [DoctorController::class, 'show'])->name('doctor.show');
+    Route::delete('/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
 });
 
 
 // Pages
-Route::get('/', [PageController::class, 'home'])->name('home');
+// Route::get('/', [PageController::class, 'home'])->name('home');
 
 
 
@@ -61,3 +62,6 @@ Route::get('401', function () {
         401
     );
 })->name('401');
+
+Route::get("/", [HomeController::class, 'index']);
+

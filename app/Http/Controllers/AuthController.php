@@ -16,6 +16,56 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     use HttpResponses;
+    /**
+     * @OA\Post(
+     *     path="/api/auth/sendCode",
+     *     tags={"Auth"},
+     *     summary="Send OTP Code",
+     *     description="Send OTP code to user's phone number",
+     *     security={{"csrf":{}}},
+     *     @OA\RequestBody(
+     *         description="User phone number",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="phone",
+     *                 type="string",
+     *                 example="09123456789"
+     *             ),
+     *             @OA\Property(
+     *                 property="_token",
+     *                 type="string",
+     *                 description="CSRF Token"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="لطفا رمز خود را وارد کنید"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad Request",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="error",
+     *                 type="string",
+     *                 example="اطلاعات ارسال شده درست نبوده است"
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function sendCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -211,7 +261,47 @@ class AuthController extends Controller
             );
         }
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     tags={"Auth"},
+     *     summary="Logout",
+     *     description="Logout the current user",
+     *     security={{"bearer_token":{}}},
+     *     @OA\RequestBody(
+     *         description="",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="user",
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="id",
+     *                     type="integer",
+     *                     example=1
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string",
+     *                 example="با موفقیت از حساب خود خارج شدید"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized"
+     *     )
+     * )
+     */
     public function logout()
     {
         $user = request()->user('sanctum');
