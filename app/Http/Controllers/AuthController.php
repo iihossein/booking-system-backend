@@ -79,7 +79,7 @@ class AuthController extends Controller
         $user = User::where('phone', $request->phone)->first();
 
 
-        if ($user) {
+        if ($user and $user->password != null) {
             if ($user->status == 0) {
                 return $this->errorResponse('user status', 'حساب کاربری شما محدود شده است', 400);
 
