@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
 use App\Http\Resources\DoctorResource;
 use App\Http\Resources\ExpertiseResource;
 use App\Models\Doctor;
@@ -21,4 +22,34 @@ class PageController extends Controller
             'bestDoctors' => DoctorResource::collection($best_doctors)
         ];
     }
+    /**
+     * @OA\Get(
+     *   path="/api/search",
+     *   summary="Search for doctors by name",
+     *   tags={"Doctors"},
+     *   @OA\Parameter(
+     *       name="name",
+     *       in="query",
+     *       description="Doctor name",
+     *       required=true,
+     *       @OA\Schema(type="string")
+     *   ),
+     *   @OA\Response(
+     *       response=200,
+     *       description="Successful search",
+     *       
+     *   )
+     * )
+     */
+    public function search(SearchRequest $request)
+    {
+        $name = $request->get('name');
+        $doctors = Doctor::searchByName($name)->get();
+        return DoctorResource::collection($doctors);
+    }
+
+
+
+
+
 }

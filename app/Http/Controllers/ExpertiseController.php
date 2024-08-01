@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DoctorResource;
 use App\Http\Resources\ExpertiseResource;
 use App\Models\Expertise;
 use Illuminate\Http\JsonResponse;
@@ -58,26 +59,7 @@ class ExpertiseController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="OK",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(
-     *                 property="data",
-     *                 type="object",
-     *                 @OA\Property(
-     *                     property="expertise",
-     *                     type="object",
-     *                     @OA\Property(
-     *                         property="id",
-     *                         example="1"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="name",
-     *                         type="string",
-     *                         example="Expertise Name"
-     *                     )
-     *                 )
-     *             )
-     *         )
+     *         
      *     ),
      *     @OA\Response(
      *         response="404",
@@ -118,14 +100,7 @@ class ExpertiseController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="OK",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(
-     *                 property="messages",
-     *                 type="string",
-     *                 example="تخصص مورد نظر با موفقیت حذف شد."
-     *             )
-     *         )
+     *         
      *     ),
      *     @OA\Response(
      *         response="404",
@@ -141,5 +116,34 @@ class ExpertiseController extends Controller
         return json_encode([
             'messages' => 'تخصص مورد نظر با موفقیت حذف شد.'
         ]);
+    }
+    /**
+ * @OA\Get(
+ *     path="/api/expertise/search/{id}",
+ *     summary="Search for an expertise by ID",
+ *     tags={"Expertises"},
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID of the expertise",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Successful operation",
+ *         
+
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Expertise not found"
+ *     )
+ * )
+ */
+    public function search(string $id)
+    {
+        $expertise = Expertise::with('doctors')->where('id', $id)->first();
+        return DoctorResource::collection($expertise->doctors);
     }
 }

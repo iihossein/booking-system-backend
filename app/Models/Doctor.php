@@ -16,6 +16,14 @@ class Doctor extends Model
         'expertise_id',
         'date_start_treatment',
     ];
+    public function scopeSearchByName($query, $name)
+    {
+        return $query->whereHas('user', function ($query) use ($name) {
+            $query->where('first_name', 'like', '%' . $name . '%')
+                ->orWhere('last_name', 'like', '%' . $name . '%');
+        });
+    }
+
 
     public function user(): BelongsTo
     {

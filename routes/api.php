@@ -19,6 +19,8 @@ use Symfony\Component\HttpKernel\Controller\ErrorController;
 Route::prefix('expertise')->group(function () {
     Route::get('/', [ExpertiseController::class, 'index'])->name('expertise.index');
     Route::get('/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
+    Route::get('/search/{id}', [ExpertiseController::class, 'search']);
+
 });
 Route::prefix('doctor')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
@@ -29,7 +31,7 @@ Route::prefix('doctor')->group(function () {
 
 // Pages
 // Route::get('/', [PageController::class, 'home'])->name('home');
-
+Route::get('/search', [PageController::class, 'search']);
 
 
 // Auth
@@ -42,7 +44,6 @@ Route::post('auth/resetPassword', [AuthController::class, 'resetPassword']);
 
 
 
-Route::post('auth/logout/{phone}', [AuthController::class, 'logout']);
 
 
 

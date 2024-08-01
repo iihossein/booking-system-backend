@@ -144,55 +144,7 @@
                 "operationId": "f2faa955668b3e6887792008f2d09661",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "doctor_id": {
-                                                "type": "integer",
-                                                "example": 1
-                                            },
-                                            "first_name": {
-                                                "type": "string",
-                                                "example": "John"
-                                            },
-                                            "last_name": {
-                                                "type": "string",
-                                                "example": "Doe"
-                                            },
-                                            "specialization_id_fk": {
-                                                "type": "integer",
-                                                "example": 12
-                                            },
-                                            "doctor_rooms": {
-                                                "type": "array",
-                                                "items": {
-                                                    "properties": {
-                                                        "doctor_room_id": {
-                                                            "type": "integer",
-                                                            "example": 1
-                                                        },
-                                                        "room": {
-                                                            "type": "string",
-                                                            "example": "151"
-                                                        },
-                                                        "doctor_id_fk": {
-                                                            "type": "integer",
-                                                            "example": 1
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                }
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                }
-                            }
-                        }
+                        "description": "OK"
                     },
                     "404": {
                         "description": "Not Found"
@@ -221,102 +173,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "doctor": {
-                                            "properties": {
-                                                "doctor_id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "first_name": {
-                                                    "type": "string",
-                                                    "example": "John"
-                                                },
-                                                "last_name": {
-                                                    "type": "string",
-                                                    "example": "Doe"
-                                                },
-                                                "specialization_id_fk": {
-                                                    "type": "integer",
-                                                    "example": 12
-                                                },
-                                                "doctor_rooms": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "properties": {
-                                                            "doctor_room_id": {
-                                                                "type": "integer",
-                                                                "example": 1
-                                                            },
-                                                            "room": {
-                                                                "type": "string",
-                                                                "example": "151"
-                                                            },
-                                                            "doctor_id_fk": {
-                                                                "type": "integer",
-                                                                "example": 1
-                                                            }
-                                                        },
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer_token": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Doctors"
-                ],
-                "summary": "Delete Doctor by ID",
-                "description": "Delete a doctor by its ID",
-                "operationId": "0ce07cef46a97c7cf00c188f3d236076",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Doctor ID",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "messages": {
-                                            "type": "string",
-                                            "example": "دکتر مورد نظر با موفقیت حذف شد."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     },
                     "404": {
                         "description": "Not Found"
@@ -365,33 +222,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "properties": {
-                                                "expertise": {
-                                                    "properties": {
-                                                        "id": {
-                                                            "example": "1"
-                                                        },
-                                                        "name": {
-                                                            "type": "string",
-                                                            "example": "Expertise Name"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     },
                     "404": {
                         "description": "Not Found"
@@ -423,20 +254,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "messages": {
-                                            "type": "string",
-                                            "example": "تخصص مورد نظر با موفقیت حذف شد."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     },
                     "404": {
                         "description": "Not Found"
@@ -449,6 +267,59 @@
                 ]
             }
         },
+        "/api/expertise/search/{id}": {
+            "get": {
+                "tags": [
+                    "Expertises"
+                ],
+                "summary": "Search for an expertise by ID",
+                "operationId": "a7e4d8e1bfa08359e7fc1fe3bb46b917",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the expertise",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Expertise not found"
+                    }
+                }
+            }
+        },
+        "/api/search": {
+            "get": {
+                "tags": [
+                    "Doctors"
+                ],
+                "summary": "Search for doctors by name",
+                "operationId": "101eb212307ae86ed9c586c1eed54a69",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Doctor name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful search"
+                    }
+                }
+            }
+        },
         "/api/whoami": {
             "get": {
                 "tags": [
@@ -459,60 +330,7 @@
                 "operationId": "5828dda88a008ed589674f7de12a7afa",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "string",
-                                            "example": "1"
-                                        },
-                                        "firstName": {
-                                            "type": "string",
-                                            "example": "John"
-                                        },
-                                        "lastName": {
-                                            "type": "string",
-                                            "example": "Doe"
-                                        },
-                                        "phone": {
-                                            "type": "string",
-                                            "example": "0123456789"
-                                        },
-                                        "nationalCode": {
-                                            "type": "string",
-                                            "example": "1234567890"
-                                        },
-                                        "gender": {
-                                            "type": "string",
-                                            "example": "مرد"
-                                        },
-                                        "birthday": {
-                                            "type": "string",
-                                            "example": "1990-01-01"
-                                        },
-                                        "code": {
-                                            "type": "string",
-                                            "example": "123456"
-                                        },
-                                        "status": {
-                                            "type": "string",
-                                            "example": "active"
-                                        },
-                                        "createdAt": {
-                                            "type": "string",
-                                            "example": "2022-01-01 00:00:00"
-                                        },
-                                        "updatedAt": {
-                                            "type": "string",
-                                            "example": "2022-01-01 00:00:00"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     },
                     "401": {
                         "description": "Unauthorized"
