@@ -92,27 +92,25 @@ class Otp
     // check if user otp is correct and not expired
     public function checkOtp($phone, $code)
     {
-        // $otp = User::where([['phone', $phone], ['code', $code]])->first();
+        $otp = User::where([['phone', $phone], ['code', $code]])->first();
 
-        // if ($otp) {
+        if ($otp) {
 
-        //     // if ($this->checkExpiredOtp($otp->updated_at)) {
-        //     //     return response()->json(
-        //     //         [
-        //     //             'status' => 'error',
-        //     //             'description' => 'code expired',
-        //     //             'message' => 'کد تایید منقضی شده است',
-        //     //             // 'code' => $code,
-        //     //         ],
-        //     //         400
-        //     //     );
-        //     // }
-        //     return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
-        // } else {
-        //     return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
-        // }
-        return $this->successResponse('correct code', 'کد تایید درست وارد شده');
-
+            // if ($this->checkExpiredOtp($otp->updated_at)) {
+            //     return response()->json(
+            //         [
+            //             'status' => 'error',
+            //             'description' => 'code expired',
+            //             'message' => 'کد تایید منقضی شده است',
+            //             // 'code' => $code,
+            //         ],
+            //         400
+            //     );
+            // }
+            return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
+        } else {
+            return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
+        }
     }
 
 

@@ -16,13 +16,13 @@ use Symfony\Component\HttpKernel\Controller\ErrorController;
 //     return $request->user();
 // });
 
-Route::prefix('expertise')->group(function () {
+Route::prefix('expertises')->group(function () {
     Route::get('/', [ExpertiseController::class, 'index'])->name('expertise.index');
     Route::get('/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
     Route::get('/search/{id}', [ExpertiseController::class, 'search']);
 
 });
-Route::prefix('doctor')->group(function () {
+Route::prefix('doctors')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
     Route::get('/{id}', [DoctorController::class, 'show'])->name('doctor.show');
     Route::delete('/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');

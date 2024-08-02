@@ -1,0 +1,362 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Visitech",
+    "dateExported": "2024-08-02T16:21:28.444Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-08-02T08:04:12.605Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "b7c4e3d1-bc99-4ff0-b0f7-5ceea7a0fa43",
+            "name": "Users",
+            "containerId": "",
+            "created": "2024-08-02T08:08:24.160Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "9692091c-141e-412a-89f9-ed82cc2730dc",
+            "name": "Doctors",
+            "containerId": "",
+            "created": "2024-08-02T08:11:44.982Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "Expertises",
+            "containerId": "",
+            "created": "2024-08-02T09:13:25.563Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "7d624e39-1472-4d02-828f-66808d8b5258",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "b7c4e3d1-bc99-4ff0-b0f7-5ceea7a0fa43",
+            "name": "http://127.0.0.1:8000/api/whoami",
+            "url": "http://127.0.0.1:8000/api/whoami",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-08-02T07:24:37.051Z",
+            "modified": "2024-08-02T16:12:08.924Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "نیاز به توکن",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "نیاز به توکن"
+            },
+            "tests": []
+        },
+        {
+            "_id": "4c0c4794-d5d8-4d56-96a8-e70c666d8530",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
+            "name": "auth/sendCode",
+            "url": "http://127.0.0.1:8000/api/auth/sendCode?phone=09901988098",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-08-02T07:24:37.052Z",
+            "modified": "2024-08-02T16:00:09.292Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "phone",
+                    "value": "09901988098",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "3c03f8c0-00d2-4a90-a00d-ff1661ab7860",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
+            "name": "auth/checkCode",
+            "url": "http://127.0.0.1:8000/api/auth/checkCode?phone=09901988098&code=4729",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2024-08-02T08:19:22.854Z",
+            "modified": "2024-08-02T16:00:33.880Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "phone",
+                    "value": "09901988098",
+                    "isPath": false
+                },
+                {
+                    "name": "code",
+                    "value": "4729",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "2b9ebc08-39c5-4158-a228-ab843933ae19",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
+            "name": "auth/checkPassword",
+            "url": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988098&password=Hn1380138",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-08-02T07:24:37.049Z",
+            "modified": "2024-08-02T16:10:13.299Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "phone",
+                    "value": "09901988098",
+                    "isPath": false
+                },
+                {
+                    "name": "password",
+                    "value": "Hn1380138",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "7|C7JQonjp3RMEvzHGgFD7CK58L3ZpnQbcssBIUykc57d43671"
+            },
+            "tests": []
+        },
+        {
+            "_id": "16ff21b0-45ea-4ea0-9b6a-e9a00e3d977d",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
+            "name": "auth/registerUser",
+            "url": "http://127.0.0.1:8000/api/auth/registerUser",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-08-02T08:28:32.223Z",
+            "modified": "2024-08-02T16:01:04.660Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "first_name",
+                        "value": "حسین"
+                    },
+                    {
+                        "name": "last_name",
+                        "value": "غلامی"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "09901988098"
+                    },
+                    {
+                        "name": "password",
+                        "value": "Hn13801380"
+                    },
+                    {
+                        "name": "national_code",
+                        "value": "1363089436"
+                    },
+                    {
+                        "name": "code",
+                        "value": "4972"
+                    },
+                    {
+                        "name": "gender",
+                        "value": "0"
+                    },
+                    {
+                        "name": "birthday",
+                        "value": "1327/8/16"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "a8145722-b91a-47a6-a870-071e84984136",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
+            "name": "auth/logout",
+            "url": "http://127.0.0.1:8000/api/auth/logout",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-08-02T08:42:31.831Z",
+            "modified": "2024-08-02T08:42:31.831Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "نیاز به توکن",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "توکن فعلی رو اینجا قرار بده"
+            },
+            "tests": []
+        },
+        {
+            "_id": "02b5a0ef-5ac9-4d15-ab64-0a145c8ccb60",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "9692091c-141e-412a-89f9-ed82cc2730dc",
+            "name": "doctors",
+            "url": "http://127.0.0.1:8000/api/doctors",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-08-02T08:51:26.687Z",
+            "modified": "2024-08-02T11:04:23.625Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "840adebe-ed11-4c65-8396-278c48a609c4",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "9692091c-141e-412a-89f9-ed82cc2730dc",
+            "name": "doctor/{id}",
+            "url": "http://127.0.0.1:8000/api/doctors/{id}",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-08-02T09:12:45.205Z",
+            "modified": "2024-08-02T11:12:36.366Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e3c8f2a7-19bf-4685-82d0-4bd2a2727d12",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "expertises",
+            "url": "http://127.0.0.1:8000/api/expertises",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-08-02T11:07:43.896Z",
+            "modified": "2024-08-02T11:07:43.896Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "76db85d7-b2d6-4f00-8b48-1248f39f6267",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "9692091c-141e-412a-89f9-ed82cc2730dc",
+            "name": "doctor/{id}",
+            "url": "http://127.0.0.1:8000/api/doctors/{id}",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-08-02T11:12:23.985Z",
+            "modified": "2024-08-02T11:12:23.985Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "704407e7-c20c-4f48-bb82-303ca0c168f1",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "9692091c-141e-412a-89f9-ed82cc2730dc",
+            "name": "/search",
+            "url": "http://127.0.0.1:8000/api/search/?name=ه",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-08-02T08:11:21.912Z",
+            "modified": "2024-08-02T16:12:39.409Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "ه",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "069d33c9-0234-42a1-aa61-0c7061a82bb8",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "expertises/{id}",
+            "url": "http://127.0.0.1:8000/api/expertises/{id}",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-08-02T11:09:10.432Z",
+            "modified": "2024-08-02T11:09:10.432Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "f93a21c0-4411-44a2-b5bd-120c99737955",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "expertise/search/{id}",
+            "url": "http://127.0.0.1:8000/api/expertises/search/{id}",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-08-02T09:13:28.151Z",
+            "modified": "2024-08-02T11:04:40.414Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        }
+    ]
+}

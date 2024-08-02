@@ -20,49 +20,22 @@ class AuthController extends Controller
      * @OA\Post(
      *     path="/api/auth/sendCode",
      *     tags={"Auth"},
-     *     summary="Send OTP Code",
-     *     description="Send OTP code to user's phone number",
-     *     security={{"csrf":{}}},
+     *     summary="Send OTP code",
+     *     description="Sends an OTP code to the specified phone number.",
      *     @OA\RequestBody(
-     *         description="User phone number",
      *         required=true,
      *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(
-     *                 property="phone",
-     *                 type="string",
-     *                 example="09123456789"
-     *             ),
-     *             @OA\Property(
-     *                 property="_token",
-     *                 type="string",
-     *                 description="CSRF Token"
-     *             )
+     *             required={"phone"},
+     *             @OA\Property(property="phone", type="string", example="09123456789")
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="OK",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(
-     *                 property="message",
-     *                 type="string",
-     *                 example="لطفا رمز خود را وارد کنید"
-     *             )
-     *         )
+     *         description="OTP sent successfully",
      *     ),
      *     @OA\Response(
      *         response=400,
-     *         description="Bad Request",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(
-     *                 property="error",
-     *                 type="string",
-     *                 example="اطلاعات ارسال شده درست نبوده است"
-     *             )
-     *         )
+     *         description="Invalid phone number or user not found",
      *     )
      * )
      */
@@ -92,7 +65,32 @@ class AuthController extends Controller
             return $send_otp;
         }
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/auth/checkCode",
+     *     tags={"Auth"},
+     *     summary="Verify OTP code",
+     *     description="Verifies the OTP code sent to the specified phone number.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"code", "phone"},
+     *             @OA\Property(property="code", type="integer", example="123456"),
+     *             @OA\Property(property="phone", type="string", example="09123456789")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OTP code is valid",
+     *        
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid OTP code or phone number",
+     *         
+     *     )
+     * )
+     */
     public function checkCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -115,7 +113,32 @@ class AuthController extends Controller
             return $this->errorResponse('wrong code', 'کد تایید وارد شده اشتباه است.', 400);
         }
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/auth/checkPassword",
+     *     tags={"Auth"},
+     *     summary="Verify user password",
+     *     description="Verifies the user's password.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"password", "phone"},
+     *             @OA\Property(property="password", type="string", format="password", example="Password123"),
+     *             @OA\Property(property="phone", type="string", example="09123456789")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Password is valid",
+     *         
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid password or phone number",
+     *         
+     *     )
+     * )
+     */
     public function checkPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -139,6 +162,37 @@ class AuthController extends Controller
             return $this->errorResponse('wrong password', 'رمز عبور به اشتباه وارد شده است', 400);
         }
     }
+    /**
+     * @OA\Post(
+     *     path="/api/auth/registerUser",
+     *     tags={"Auth"},
+     *     summary="Register a new user",
+     *     description="Registers a new user with provided information.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"first_name", "last_name", "phone", "password", "national_code", "code", "gender", "birthday"},
+     *             @OA\Property(property="first_name", type="string", example="John"),
+     *             @OA\Property(property="last_name", type="string", example="Doe"),
+     *             @OA\Property(property="phone", type="string", example="09123456789"),
+     *             @OA\Property(property="password", type="string", format="password", example="Password123"),
+     *             @OA\Property(property="national_code", type="integer", example="1234567890"),
+     *             @OA\Property(property="code", type="integer", example="123456"),
+     *             @OA\Property(property="gender", type="string", enum={"male", "female"}, example="male"),
+     *             @OA\Property(property="birthday", type="string", format="date", example="1990-01-01")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="User registered successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid data or registration failed",
+     *         
+     *     )
+     * )
+     */
     public function registerUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -164,7 +218,6 @@ class AuthController extends Controller
         }
 
         $register_class = new Register();
-
         $registered_user = $register_class->registerNewUser(
             $request->first_name,
             $request->last_name,
