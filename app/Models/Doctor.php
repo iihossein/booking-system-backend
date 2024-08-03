@@ -48,4 +48,8 @@ class Doctor extends Model
     {
         return $this->hasMany(Receipt::class);
     }
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }

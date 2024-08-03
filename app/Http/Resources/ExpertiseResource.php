@@ -18,8 +18,9 @@ class ExpertiseResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             // 'slug' => $this->slug,
-            // 'image' => $this->getFirstMedia('image')->original_url, 
-            'image' => $this->getFirstMedia('image')->first()->getFullUrl(),
+            // 'image' => $this->hasMedia('image') ? $this->getFirstMediaUrl('image') : null,
+            // 'image' => $this->getFirstMedia('image')->first()->getFullUrl(),
+            // {{ asset( $ex->getFirstMediaUrl('image'))  }}
         ];
     }
 }

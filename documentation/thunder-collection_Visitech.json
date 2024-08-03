@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Visitech",
-    "dateExported": "2024-08-02T16:21:28.444Z",
+    "dateExported": "2024-08-03T22:15:00.456Z",
     "version": "1.1",
     "folders": [
         {
@@ -119,11 +119,11 @@
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
             "name": "auth/checkPassword",
-            "url": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988098&password=Hn1380138",
+            "url": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988098&password=Hn13801380",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-08-02T07:24:37.049Z",
-            "modified": "2024-08-02T16:10:13.299Z",
+            "modified": "2024-08-03T21:22:02.964Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -143,7 +143,7 @@
                 },
                 {
                     "name": "password",
-                    "value": "Hn1380138",
+                    "value": "Hn13801380",
                     "isPath": false
                 }
             ],
@@ -303,17 +303,17 @@
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "9692091c-141e-412a-89f9-ed82cc2730dc",
             "name": "/search",
-            "url": "http://127.0.0.1:8000/api/search/?name=ه",
+            "url": "http://127.0.0.1:8000/api/search/{name}",
             "method": "GET",
             "sortNum": 80000,
             "created": "2024-08-02T08:11:21.912Z",
-            "modified": "2024-08-02T16:12:39.409Z",
+            "modified": "2024-08-03T22:05:04.995Z",
             "headers": [],
             "params": [
                 {
                     "name": "name",
                     "value": "ه",
-                    "isPath": false
+                    "isPath": true
                 }
             ],
             "tests": []
@@ -336,6 +336,38 @@
                     "isPath": true
                 }
             ],
+            "tests": []
+        },
+        {
+            "_id": "d1070dab-42c1-4a6d-a4f2-c1059bc41642",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "expertises",
+            "url": "http://127.0.0.1:8000/api/expertises",
+            "method": "POST",
+            "sortNum": 85000,
+            "created": "2024-08-03T21:27:11.527Z",
+            "modified": "2024-08-03T21:27:11.527Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "مامایی"
+                    },
+                    {
+                        "name": "slug",
+                        "value": "مامایی"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|a7d2Rw5xTXNZTaKoVBQbHVOwbBoNv4m2gY4q3Zj2ebb25113"
+            },
             "tests": []
         },
         {

@@ -16,17 +16,19 @@ class DoctorResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'userId' => $this->user_id,
-            'expertiseId' => $this->expertise_id,
-            'dateStartTreatment' => $this->date_start_treatment,
-            'isActive' => $this->is_active,
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
-            // اطلاعات کاربر از جدول users
+            'doctor' => [
+                'id' => $this->id,
+                'userId' => $this->user_id,
+                'expertiseId' => $this->expertise_id,
+                'dateStartTreatment' => $this->date_start_treatment,
+                'isActive' => $this->is_active,
+                'createdAt' => $this->created_at,
+                'updatedAt' => $this->updated_at,
+            ],
             'user' => new UserResource($this->user),
-            // اطلاعات تخصص از جدول expertise
             'expertise' => new ExpertiseResource($this->expertise),
+            'office' => new OfficeResource($this->office),
+            'review' => new ReviewResource($this->review),
         ];
     }
 }

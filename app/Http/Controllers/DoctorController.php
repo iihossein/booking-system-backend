@@ -2,82 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorRequest;
 use App\Http\Requests\SearchRequest;
 use App\Http\Resources\DoctorResource;
 use App\Models\Doctor;
+use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    /**
-     * @OA\Get(
-     *     path="/api/doctors",
-     *     tags={"Doctors"},
-     *     summary="Get All Doctors",
-     *     description="Retrieve all doctors",
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         
-     *     ),
-     *     @OA\Response(
-     *         response="404",
-     *         description="Not Found"
-     *     )
-     * )
-     */
+    use HttpResponses;
     public function index()
     {
         $doctors = Doctor::all();
         return DoctorResource::collection($doctors);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
 
-    }
+    // public function store(DoctorRequest $request)
+    // {
+    //     $doctor = Doctor::create([
+    //         'user_id' => $request->user_id,
+    //         'expertise_id' => $request->expertise_id,
+    //         'date_start_treatment' => $request->date_start_treatment,
+    //         'is_active' => true, // می‌توانید این مقدار را بر اساس نیاز تغییر دهید
+    //     ]);
+    //     if ($doctor->save()) {
+    //         return $this->successResponse('created', 'عملیات افزودن دکتر با موفقیت انجام شد');
+    //     } else {
+    //         return $this->errorResponse('creatation failed', 'مشکلی در حین اضافه کردن دکتر پیش امد لطفا یک بار دیگر تلاش کنید', 400);
+    //     }
+    // }
 
-    /**
-     * @OA\Get(
-     *     path="/api/doctors/{id}",
-     *     tags={"Doctors"},
-     *     summary="Get Doctor by ID",
-     *     description="Retrieve a doctor by its ID",
-     *     security={{"bearer_token":{}}},
-     *     @OA\Parameter(
-     *         description="Doctor ID",
-     *         in="path",
-     *         name="id",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *     ),
-     *     @OA\Response(
-     *         response="404",
-     *         description="Not Found"
-     *     )
-     * )
-     */
+
     public function show(string $id)
     {
         $doctor = Doctor::findOrFail($id);
         return new DoctorResource($doctor);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // public function update(DoctorRequest $request, string $id)
+    // {
+    //     $doctor = Doctor::find($id);
+
+    //     // به‌روزرسانی اطلاعات دکتر با استفاده از داده‌های اعتبارسنجی شده
+    //     $doctor->update([
+    //         'user_id' => $request->user_id,
+    //         'expertise_id' => $request->expertise_id,
+    //         'date_start_treatment' => $request->date_start_treatment,
+    //         'is_active' => $request->is_active, // فرض بر این است که این فیلد هم در درخواست وجود دارد
+    //     ]);
+    //     if ($doctor->save()) {
+    //         return $this->successResponse('created', 'عملیات ویرایش دکتر با موفقیت انجام شد');
+    //     } else {
+    //         return $this->errorResponse('creatation failed', 'مشکلی در حین ویرایش کردن دکتر پیش امد لطفا یک بار دیگر تلاش کنید', 400);
+    //     }
+    // }
+    public function destroy(string $id)
     {
-        //
+        $doctor = Doctor::find($id);
+        if ($doctor->destroy($id)) {
+            return $this->successResponse('created', 'عملیات حذف دکتر با موفقیت انجام شد');
+
+        } else {
+            return $this->errorResponse('creatation failed', 'مشکلی در حین حذف کردن دکتر پیش امد لطفا یک بار دیگر تلاش کنید', 400);
+        }
     }
 
 

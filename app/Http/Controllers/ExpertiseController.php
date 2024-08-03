@@ -2,145 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExpertiseRequest;
 use App\Http\Resources\DoctorResource;
 use App\Http\Resources\ExpertiseResource;
 use App\Models\Expertise;
+use App\Traits\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ExpertiseController extends Controller
 {
-
-
-    /**
-     * @OA\Get(
-     *     path="/api/expertise",
-     *     tags={"Expertises"},
-     *     summary="Get all expertises",
-     *     description="Get all expertises",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful operation",
-     *         
-     *     )
-     * )
-     */
+    use HttpResponses;
     public function index()
     {
         $expertises = Expertise::all();
         return ExpertiseResource::collection($expertises);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(request $request)
+    public function store(ExpertiseRequest $request)
     {
-        //
-    }
+        $expertise = Expertise::create([
+            'name' => $request->name,
+            'slug' => $request->slug ?? null, // اگر slug موجود نباشد، مقدار null قرار می‌دهیم
+        ]);
+        if ($expertise->save()) {
+            return $this->successResponse('created', 'عملیات افزودن تخصص با موفقیت انجام شد');
+        } else {
+            return $this->errorResponse('creatation failed', 'مشکلی در حین اضافه کردن تخصص پیش امد لطفا یک بار دیگر تلاش کنید', 400);
+        }
 
-    /**
-     * @OA\Get(
-     *     path="/api/expertise/{id}",
-     *     tags={"Expertises"},
-     *     summary="Get Expertise by ID",
-     *     description="Retrieve an expertise by its ID",
-     *     security={{"bearer_token":{}}},
-     *     @OA\Parameter(
-     *         description="Expertise ID",
-     *         in="path",
-     *         name="id",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         
-     *     ),
-     *     @OA\Response(
-     *         response="404",
-     *         description="Not Found"
-     *     )
-     * )
-     */
+    }
     public function show(string $id)
     {
         $expertise = Expertise::findOrFail($id);
         return new ExpertiseResource($expertise);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * @OA\Delete(
-     *     path="/api/expertise/{id}",
-     *     tags={"Expertises"},
-     *     summary="Delete Expertise by ID",
-     *     description="Delete an expertise by its ID",
-     *     security={{"bearer_token":{}}},
-     *     @OA\Parameter(
-     *         description="Expertise ID",
-     *         in="path",
-     *         name="id",
-     *         required=true,
-     *         @OA\Schema(
-     *             type="string"
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         
-     *     ),
-     *     @OA\Response(
-     *         response="404",
-     *         description="Not Found"
-     *     )
-     * )
-     */
-    public function destroy(string $id)
+    public function update(ExpertiseRequest $request, string $id)
     {
         $expertise = Expertise::findOrFail($id);
-        $expertise->destroy($id);
 
-        return json_encode([
-            'messages' => 'تخصص مورد نظر با موفقیت حذف شد.'
+        // بررسی وجود تخصص
+        if (!$expertise) {
+            return $this->errorResponse('not found', 'تخصص مورد نظر پیدا نشد', 404);
+        }
+
+        // به‌روزرسانی تخصص
+        $expertise->update([
+            'name' => $request->name,
+            'slug' => $request->slug ?? null, // اگر slug موجود نباشد، مقدار null قرار می‌دهیم
         ]);
-    }
-    /**
- * @OA\Get(
- *     path="/api/expertise/search/{id}",
- *     summary="Search for an expertise by ID",
- *     tags={"Expertises"},
- *     @OA\Parameter(
- *         name="id",
- *         in="path",
- *         description="ID of the expertise",
- *         required=true,
- *         @OA\Schema(type="integer")
- *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Successful operation",
- *         
 
- *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Expertise not found"
- *     )
- * )
- */
+        // بازگشت پاسخ موفقیت‌آمیز
+        return $this->successResponse('updated', 'عملیات ویرایش تخصص با موفقیت انجام شد');
+    }
+
+
+    public function destroy(string $id)
+    {
+        $expertise = Expertise::find($id);
+        if ($expertise->destroy($id)) {
+            return $this->successResponse('created', 'عملیات حذف تخصص با موفقیت انجام شد');
+
+        } else {
+            return $this->errorResponse('creatation failed', 'مشکلی در حین حذف کردن تخصص پیش امد لطفا یک بار دیگر تلاش کنید', 400);
+        }
+    }
+
     public function search(string $id)
     {
         $expertise = Expertise::with('doctors')->where('id', $id)->first();

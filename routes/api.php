@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
@@ -9,7 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\ExpertiseController;
-use Symfony\Component\HttpKernel\Controller\ErrorController;
+
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -17,21 +19,36 @@ use Symfony\Component\HttpKernel\Controller\ErrorController;
 // });
 
 Route::prefix('expertises')->group(function () {
+    Route::group(['middleware' => ['auth:sanctum', 'sanctum.auth']], function () {
+        Route::post('/', [ExpertiseController::class, 'store'])->name('expertise.store');
+        Route::put('/{id}', [ExpertiseController::class, 'update'])->name('expertise.update');
+        Route::delete('/{id}', [ExpertiseController::class, 'destroy'])->name('expertise.destroy');
+    });
     Route::get('/', [ExpertiseController::class, 'index'])->name('expertise.index');
     Route::get('/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
     Route::get('/search/{id}', [ExpertiseController::class, 'search']);
-
 });
+
 Route::prefix('doctors')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
     Route::get('/{id}', [DoctorController::class, 'show'])->name('doctor.show');
     Route::delete('/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
 });
 
+Route::prefix('reviews')->group(function () {
+    Route::group(['middleware' => ['auth:sanctum', 'sanctum.auth']], function () {
+        Route::post('/', [ReviewController::class, 'store']);
+        Route::put('/{id}', [ReviewController::class, 'update']);
+        Route::delete('/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+    });
+    Route::get('/', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/{id}', [ReviewController::class, 'show'])->name('review.show');
+});
+
 
 // Pages
 // Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/search', [PageController::class, 'search']);
+Route::get('/search/{name}', [PageController::class, 'search']);
 
 
 // Auth
