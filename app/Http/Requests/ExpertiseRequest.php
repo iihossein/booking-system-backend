@@ -25,11 +25,13 @@ class ExpertiseRequest extends FormRequest
             // اعتبارسنجی برای ایجاد پست جدید
             return [
                 'name' => 'required|string|max:255',
+                'slug' => 'nullable|string|max:255',
             ];
         } elseif ($this->isMethod('put')) {
             // اعتبارسنجی برای ویرایش پست
             return [
-                'name' => 'required|string|max:255',
+                'name' => 'nullable|string|max:255',
+                'slug' => 'nullable|string|max:255',
             ];
         } else {
             return [];

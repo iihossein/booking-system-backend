@@ -93,6 +93,7 @@ class Otp
     public function checkOtp($phone, $code)
     {
         $otp = User::where([['phone', $phone], ['code', $code]])->first();
+        // $otp = User::where([['phone', $phone]])->first();
 
         if ($otp) {
 
@@ -107,9 +108,9 @@ class Otp
             //         400
             //     );
             // }
-            return $this->successResponse('', 'correct code', 'کد تایید درست وارد شده');
+            return $this->successResponse('correct code', 'کد تایید درست وارد شده');
         } else {
-            return $this->errorResponse('', 'code not found', 'کد تایید اشتباه وارد شده است');
+            return $this->errorResponse('code not found', 'کد تایید اشتباه وارد شده است', 400);
         }
     }
 

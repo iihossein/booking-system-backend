@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Visitech",
-    "dateExported": "2024-08-03T22:15:00.456Z",
+    "dateExported": "2024-08-06T13:59:44.094Z",
     "version": "1.1",
     "folders": [
         {
@@ -31,6 +31,13 @@
             "containerId": "",
             "created": "2024-08-02T09:13:25.563Z",
             "sortNum": 40000
+        },
+        {
+            "_id": "dbd981a7-cab2-40fd-91b0-a52a0ee27671",
+            "name": "Reviews",
+            "containerId": "",
+            "created": "2024-08-04T19:12:57.502Z",
+            "sortNum": 50000
         }
     ],
     "requests": [
@@ -265,6 +272,20 @@
             "tests": []
         },
         {
+            "_id": "f720e08d-1422-44f7-888a-8b032e6ed07e",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "dbd981a7-cab2-40fd-91b0-a52a0ee27671",
+            "name": "reviews",
+            "url": "http://127.0.0.1:8000/api/reviews",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-08-04T20:05:10.710Z",
+            "modified": "2024-08-04T20:05:10.710Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "e3c8f2a7-19bf-4685-82d0-4bd2a2727d12",
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
@@ -371,23 +392,234 @@
             "tests": []
         },
         {
+            "_id": "9e1b7514-4652-4890-bbc4-f4bd8c9d26a7",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "expertises/{id}",
+            "url": "http://127.0.0.1:8000/api/expertises/{id}",
+            "method": "PUT",
+            "sortNum": 87500,
+            "created": "2024-08-04T18:34:40.579Z",
+            "modified": "2024-08-04T18:55:42.718Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "للللل"
+                    },
+                    {
+                        "name": "slug",
+                        "value": "مامایی"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "606b6246-871d-4228-b085-6c5efeb2c220",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
+            "name": "expertises/{id}",
+            "url": "http://127.0.0.1:8000/api/expertises/{id}",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-08-04T14:57:26.060Z",
+            "modified": "2024-08-04T14:57:26.061Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|uhjXE9LaXuCVHhaBf8EKI0kZ95ABKBvFEF8mgMCh6d379a4b"
+            },
+            "tests": []
+        },
+        {
             "_id": "f93a21c0-4411-44a2-b5bd-120c99737955",
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "4b95f9ac-0d15-4ad5-8255-98879bb69224",
             "name": "expertise/search/{id}",
             "url": "http://127.0.0.1:8000/api/expertises/search/{id}",
             "method": "GET",
-            "sortNum": 90000,
+            "sortNum": 110000,
             "created": "2024-08-02T09:13:28.151Z",
-            "modified": "2024-08-02T11:04:40.414Z",
+            "modified": "2024-08-04T12:49:34.679Z",
             "headers": [],
             "params": [
                 {
                     "name": "id",
-                    "value": "4",
+                    "value": "2",
                     "isPath": true
                 }
             ],
+            "tests": []
+        },
+        {
+            "_id": "1b45fce6-640a-4de2-875e-ca8c08c134e3",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "dbd981a7-cab2-40fd-91b0-a52a0ee27671",
+            "name": "reviews",
+            "url": "http://127.0.0.1:8000/api/reviews",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-08-04T19:13:10.541Z",
+            "modified": "2024-08-04T19:13:10.543Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "user_id",
+                        "value": "6"
+                    },
+                    {
+                        "name": "doctor_id",
+                        "value": "13"
+                    },
+                    {
+                        "name": "text",
+                        "value": "سلام دکتر خیلی خوبی هستند"
+                    },
+                    {
+                        "name": "rate",
+                        "value": "4"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d0c2feb4-ba2f-4aa9-a88f-cc3c2c2b13cd",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "dbd981a7-cab2-40fd-91b0-a52a0ee27671",
+            "name": "reviews/{id}",
+            "url": "http://127.0.0.1:8000/api/reviews/{id}",
+            "method": "GET",
+            "sortNum": 125000,
+            "created": "2024-08-04T20:03:34.893Z",
+            "modified": "2024-08-04T20:03:34.893Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "124",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "df3a4a47-ce1a-4338-9d30-7f38d9a2114c",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "dbd981a7-cab2-40fd-91b0-a52a0ee27671",
+            "name": "reviews/{id}",
+            "url": "http://127.0.0.1:8000/api/reviews/{id}",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2024-08-04T19:58:57.249Z",
+            "modified": "2024-08-04T19:58:57.249Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "201",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "user_id",
+                        "value": "6"
+                    },
+                    {
+                        "name": "doctor_id",
+                        "value": "13"
+                    },
+                    {
+                        "name": "text",
+                        "value": "سلام دکتر خیلی خوبی هستند"
+                    },
+                    {
+                        "name": "rate",
+                        "value": "4"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7fca5841-47a3-46f0-9780-ce5f7257d4bd",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "dbd981a7-cab2-40fd-91b0-a52a0ee27671",
+            "name": "reviews/{id}",
+            "url": "http://127.0.0.1:8000/api/reviews/{id}",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2024-08-04T20:00:33.312Z",
+            "modified": "2024-08-04T20:00:33.312Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "201",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f"
+            },
             "tests": []
         }
     ]

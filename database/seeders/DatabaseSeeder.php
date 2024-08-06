@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([ExpertiseSeeder::class]);
         $this->call([DoctorSeeder::class]);
         $this->call([OfficeSeeder::class]);
-        $this->call([ReviewsSeeder::class]);
+        $this->call([ReviewSeeder::class]);
     }
 }

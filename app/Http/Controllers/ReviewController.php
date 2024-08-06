@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewRequest;
 use App\Http\Requests\ReviewsRequest;
 use App\Http\Resources\ReviewResource;
 use App\Models\Review;
@@ -14,7 +15,7 @@ class ReviewController extends Controller
     {
         return ReviewResource::collection(Review::all());
     }
-    public function store(ReviewsRequest $request)
+    public function store(ReviewRequest $request)
     {
         $validatedData = $request->validated();
 
@@ -43,7 +44,7 @@ class ReviewController extends Controller
 
 
 
-    public function update(ReviewsRequest $request, $id)
+    public function update(ReviewRequest $request, $id)
     {
         // پیدا کردن نظر بر اساس ID
         $review = Review::find($id);
@@ -59,14 +60,14 @@ class ReviewController extends Controller
         ]);
 
         // بازگشت پاسخ موفقیت‌آمیز
-        return $this->successResponse('updated', 'نظر شما با موفقیت به‌روزرسانی شد');
+        return $this->successResponse('updated', 'نظر با موفقیت بروزرسانی شد');
     }
 
 
 
     public function destroy(string $id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
         if ($review->destroy($id)) {
             return $this->successResponse('created', 'عملیات حذف نظر با موفقیت انجام شد');
 

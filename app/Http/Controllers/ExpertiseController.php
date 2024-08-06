@@ -10,6 +10,7 @@ use App\Traits\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Validator;
 
 class ExpertiseController extends Controller
 {
@@ -40,19 +41,19 @@ class ExpertiseController extends Controller
     }
 
 
-    public function update(ExpertiseRequest $request, string $id)
+    public function update(ExpertiseRequest $request, int $id)
     {
-        $expertise = Expertise::findOrFail($id);
-
+        $expertise = Expertise::find($id);
         // بررسی وجود تخصص
         if (!$expertise) {
             return $this->errorResponse('not found', 'تخصص مورد نظر پیدا نشد', 404);
         }
 
+
         // به‌روزرسانی تخصص
         $expertise->update([
-            'name' => $request->name,
-            'slug' => $request->slug ?? null, // اگر slug موجود نباشد، مقدار null قرار می‌دهیم
+            'name' => $request->name ?? $expertise->name,
+            'slug' => $request->slug ?? $expertise->slug, // اگر slug موجود نباشد، مقدار null قرار می‌دهیم
         ]);
 
         // بازگشت پاسخ موفقیت‌آمیز
@@ -62,7 +63,7 @@ class ExpertiseController extends Controller
 
     public function destroy(string $id)
     {
-        $expertise = Expertise::find($id);
+        $expertise = Expertise::findOrFail($id);
         if ($expertise->destroy($id)) {
             return $this->successResponse('created', 'عملیات حذف تخصص با موفقیت انجام شد');
 

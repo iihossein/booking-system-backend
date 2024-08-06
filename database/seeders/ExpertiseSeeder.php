@@ -55,7 +55,7 @@ class ExpertiseSeeder extends Seeder
             //     'name' => 'Dermatology',
             //     'image' => 'dermatology.jpg',
             // ],
-            
+
         ];
         // ادامه داده‌های دیگر
 
@@ -65,7 +65,7 @@ class ExpertiseSeeder extends Seeder
 
 
 
-        
+
 
         foreach ($expertises as $expertise) {
             $expertiseModel = Expertise::create([
@@ -73,7 +73,7 @@ class ExpertiseSeeder extends Seeder
             ]);
 
             $expertiseModel->addMedia(public_path('images/' . $expertise['image']))
-                ->toMediaCollection('image');
+                ->toMediaCollection('expertise');
         }
     }
 }

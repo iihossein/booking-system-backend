@@ -60,7 +60,7 @@ class DoctorController extends Controller
     // }
     public function destroy(string $id)
     {
-        $doctor = Doctor::find($id);
+        $doctor = Doctor::findOrFail($id);
         if ($doctor->destroy($id)) {
             return $this->successResponse('created', 'عملیات حذف دکتر با موفقیت انجام شد');
 

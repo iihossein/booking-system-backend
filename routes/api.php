@@ -18,16 +18,16 @@ use App\Http\Controllers\ExpertiseController;
 //     return $request->user();
 // });
 
+// Expertises
 Route::prefix('expertises')->group(function () {
-    Route::group(['middleware' => ['auth:sanctum', 'sanctum.auth']], function () {
-        Route::post('/', [ExpertiseController::class, 'store'])->name('expertise.store');
-        Route::put('/{id}', [ExpertiseController::class, 'update'])->name('expertise.update');
-        Route::delete('/{id}', [ExpertiseController::class, 'destroy'])->name('expertise.destroy');
-    });
     Route::get('/', [ExpertiseController::class, 'index'])->name('expertise.index');
     Route::get('/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
     Route::get('/search/{id}', [ExpertiseController::class, 'search']);
 });
+Route::post('expertises/', [ExpertiseController::class, 'store'])->middleware('auth:sanctum');
+Route::put('expertises/{id}', [ExpertiseController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('expertises/{id}', [ExpertiseController::class, 'destroy'])->middleware('auth:sanctum');
+
 
 Route::prefix('doctors')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
@@ -36,7 +36,7 @@ Route::prefix('doctors')->group(function () {
 });
 
 Route::prefix('reviews')->group(function () {
-    Route::group(['middleware' => ['auth:sanctum', 'sanctum.auth']], function () {
+    Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/', [ReviewController::class, 'store']);
         Route::put('/{id}', [ReviewController::class, 'update']);
         Route::delete('/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');

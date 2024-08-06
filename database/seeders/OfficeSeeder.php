@@ -13,6 +13,6 @@ class OfficeSeeder extends Seeder
      */
     public function run(): void
     {
-        Office::factory()->count(50)->create();
+        Office::factory()->count(30)->create();
     }
 }
