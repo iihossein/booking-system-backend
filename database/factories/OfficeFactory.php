@@ -20,7 +20,7 @@ class OfficeFactory extends Factory
         return [
             'doctor_id' => Doctor::inRandomOrder()->first()->id,
             'address' => $this->faker->address(),
-            'phone' => $this->faker->phoneNumber(),
+            'office_phone' => $this->faker->phoneNumber(),
             'days_of_week' => $this->faker->randomElement(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']),
             'appointments_number' => $this->faker->numberBetween(15, 20),
         ];

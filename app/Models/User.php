@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Doctor;
+use Hekmatinasser\Verta\Facades\Verta;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -46,7 +47,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'birthday' => 'datetime',
         'password' => 'hashed',
     ];
 
@@ -66,4 +67,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+    public function getCreatedAtShamsiAttribute()
+    {
+        $created_at = $this->attributes['created_at'];
+        return Verta::instance($created_at)->format('Y/m/d H:i:s');
+    }
+
+    public function getUpdatedAtShamsiAttribute()
+    {
+        $updated_at = $this->attributes['updated_at'];
+        return Verta::instance($updated_at)->format('Y/m/d H:i:s');
+    }
+    public function getBirthdayShamsiAttribute()
+    {
+        $birthday = $this->attributes['birthday'];
+        return Verta::instance($birthday)->format('Y/m/d');
+    }
+    // protected $dates = ['birthday'];
+    // public function setBirthdayAttribute($value)
+    // {
+    //     $this->attributes['birthday'] = Verta::parse("{$value} 00:00:00")->datetime ();
+    // }
 }

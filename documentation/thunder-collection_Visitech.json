@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Visitech",
-    "dateExported": "2024-08-06T13:59:44.094Z",
+    "dateExported": "2024-08-09T13:18:47.867Z",
     "version": "1.1",
     "folders": [
         {
@@ -81,16 +81,16 @@
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
             "name": "auth/sendCode",
-            "url": "http://127.0.0.1:8000/api/auth/sendCode?phone=09901988098",
+            "url": "http://127.0.0.1:8000/api/auth/sendCode?phone=09901988088",
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-08-02T07:24:37.052Z",
-            "modified": "2024-08-02T16:00:09.292Z",
+            "modified": "2024-08-08T18:43:39.234Z",
             "headers": [],
             "params": [
                 {
                     "name": "phone",
-                    "value": "09901988098",
+                    "value": "09901988088",
                     "isPath": false
                 }
             ],
@@ -101,16 +101,16 @@
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
             "name": "auth/checkCode",
-            "url": "http://127.0.0.1:8000/api/auth/checkCode?phone=09901988098&code=4729",
+            "url": "http://127.0.0.1:8000/api/auth/checkCode?phone=09901988088&code=4729",
             "method": "POST",
             "sortNum": 15000,
             "created": "2024-08-02T08:19:22.854Z",
-            "modified": "2024-08-02T16:00:33.880Z",
+            "modified": "2024-08-08T18:44:09.243Z",
             "headers": [],
             "params": [
                 {
                     "name": "phone",
-                    "value": "09901988098",
+                    "value": "09901988088",
                     "isPath": false
                 },
                 {
@@ -126,11 +126,11 @@
             "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
             "containerId": "196f953a-a22e-4ec0-a91e-ce841c1081aa",
             "name": "auth/checkPassword",
-            "url": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988098&password=Hn13801380",
+            "url": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988088&password=Hn13801380",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-08-02T07:24:37.049Z",
-            "modified": "2024-08-03T21:22:02.964Z",
+            "modified": "2024-08-08T18:44:27.092Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -145,7 +145,7 @@
             "params": [
                 {
                     "name": "phone",
-                    "value": "09901988098",
+                    "value": "09901988088",
                     "isPath": false
                 },
                 {
@@ -169,8 +169,13 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-08-02T08:28:32.223Z",
-            "modified": "2024-08-02T16:01:04.660Z",
-            "headers": [],
+            "modified": "2024-08-09T12:07:47.443Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "formdata",
@@ -186,7 +191,7 @@
                     },
                     {
                         "name": "phone",
-                        "value": "09901988098"
+                        "value": "09901988088"
                     },
                     {
                         "name": "password",
@@ -206,7 +211,35 @@
                     },
                     {
                         "name": "birthday",
-                        "value": "1327/8/16"
+                        "value": "1368/08/16"
+                    },
+                    {
+                        "name": "expertise_id",
+                        "value": "4"
+                    },
+                    {
+                        "name": "date_start_treatment",
+                        "value": "1372/11/05"
+                    },
+                    {
+                        "name": "address",
+                        "value": "تبریز چهارراه منصور برج ابریشم طبقه 7"
+                    },
+                    {
+                        "name": "office_phone",
+                        "value": "04137289426"
+                    },
+                    {
+                        "name": "days_of_week",
+                        "value": "1"
+                    },
+                    {
+                        "name": "appointments_number",
+                        "value": "20"
+                    },
+                    {
+                        "name": "as_doctor",
+                        "value": "true"
                     }
                 ]
             },

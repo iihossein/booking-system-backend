@@ -21,11 +21,11 @@ class UserResource extends JsonResource
             'phone' => $this->phone,
             'nationalCode' => $this->national_code,
             'gender' => $this->gender == 0 ? 'مرد' : 'زن',
-            'birthday' => $this->birthday,
+            'birthday' => $this->birthday_shamsi,
             'code' => $this->code,
             'status' => $this->status == 1 ? 'active' : 'inactive',
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
+            'createdAt' => $this->created_at_shamsi,
+            'updatedAt' => $this->updated_at_shamsi,
         ];
     }
 }

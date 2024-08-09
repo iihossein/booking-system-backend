@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('doctor_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->longText('address');
-            $table->string('phone');
+            $table->string('office_phone');
             $table->string('days_of_week');
             $table->tinyInteger('appointments_number');
             $table->timestamps();

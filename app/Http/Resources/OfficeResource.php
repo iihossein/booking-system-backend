@@ -21,8 +21,8 @@ class OfficeResource extends JsonResource
             'phone' => $this->phone,
             'daysOfWeek' => $this->days_of_week,
             'appointmentsNumber' => $this->appointments_number,
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
+            'createdAt' => $this->created_at_shamsi,
+            'updatedAt' => $this->updated_at_shamsi,
         ];
     }
 }

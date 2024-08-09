@@ -1,34 +1,40 @@
 <?php
 
+// Register.php
+
 namespace App\Classes;
 
-use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Office;
 use Carbon\Carbon;
+use App\Models\User;
+use Hekmatinasser\Verta\Facades\Verta;
+use Illuminate\Support\Facades\DB;
 
 class Register
 {
     public function registerNewUser(
-        $first_name,
-        $last_name,
-        $phone,
-        $password,
-        $national_code,
-        $gender,
-        $birthday,
+        $role,
+        $user_data,
+        $doctor_data,
+        $office_data
     ) {
-        $user = User::where('phone', $phone)->first();
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
-        $user->phone = $phone;
-        $user->password = $password;
-        $user->national_code = $national_code;
-        $user->gender = $gender;
-        $user->birthday = $birthday = Carbon::now();
-
-
-        if ($user->save()) {
+        DB::beginTransaction();
+        try {
+            $user_data['birthday'] = Verta::parse("{$user_data['birthday']} 00:00:00")->toCarbon();
+            $doctor_data['date_start_treatment'] = Verta::parse("{$doctor_data['date_start_treatment']} 00:00:00")->toCarbon();
+            $user = User::where('phone', $user_data['phone'])->first();
+            $user->update($user_data);
+            // $user->assignRole($role);
+            if ($role == 'doctor') {
+                $doctor = Doctor::create(array_merge($doctor_data, ['user_id' => $user->id]));
+                $office = Office::create(array_merge($office_data, ['doctor_id' => $doctor->id]));
+            }
+            DB::commit();
             return $user;
-        } else {
+        } catch (\Exception $e) {
+            ddd($e);
+            DB::rollBack();
             return false;
         }
     }

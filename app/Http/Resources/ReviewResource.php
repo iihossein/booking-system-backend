@@ -22,8 +22,8 @@ class ReviewResource extends JsonResource
             'text' => $this->text,
             'rate' => $this->rate,
             'isAccepted' => $this->is_accepted,
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
+            'createdAt' => $this->created_at_shamsi,
+            'updatedAt' => $this->updated_at_shamsi,
         ];
     }
 }

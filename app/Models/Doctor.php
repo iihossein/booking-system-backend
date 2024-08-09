@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -52,4 +53,26 @@ class Doctor extends Model
     {
         return $this->hasMany(Review::class);
     }
+    public function getCreatedAtShamsiAttribute()
+    {
+        $created_at = $this->attributes['created_at'];
+        return Verta::instance($created_at)->format('Y/m/d H:i:s');
+    }
+
+    public function getUpdatedAtShamsiAttribute()
+    {
+        $updated_at = $this->attributes['updated_at'];
+        return Verta::instance($updated_at)->format('Y/m/d H:i:s');
+    }
+    public function getDateStartTreatmentShamsiAttribute()
+    {
+        $date_start_treatment = $this->attributes['date_start_treatment'];
+        return Verta::instance($date_start_treatment)->format('Y/m/d');
+    }
+    // public function setDateStartTreatmentAttribute($value)
+    // {
+    //     // تبدیل تاریخ شمسی به میلادی
+    //     $date_start_treatment = Verta::createFromFormat('Y/m/d', $value); // فرمت ورودی تاریخ شمسی
+    //     $this->attributes['date_start_treatment'] = $date_start_treatment->toCarbon(); // تبدیل به Carbon و ذخیره
+    // }
 }

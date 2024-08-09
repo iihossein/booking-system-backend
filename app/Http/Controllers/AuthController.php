@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Otp;
+use App\Http\Requests\UserPostRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Classes\Login;
 use App\Classes\Register;
@@ -90,21 +92,12 @@ class AuthController extends Controller
         }
     }
 
-    public function registerUser(Request $request)
+    public function registerUser(UserRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'first_name' => ['required', 'string'],
-            'last_name' => ['required', 'string'],
-            'phone' => ['required', 'regex:/^09(1[0-9]|9[0-2]|2[0-2]|0[1-5]|41|3[0,3,5-9])\d{7}$/'],
-            'password' => ['required', 'min:6', 'regex:/^.*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/'],
-            'national_code' => ['required', 'min:5', 'integer'],
-            'code' => ['required', 'integer'],
-            'gender' => 'required',
-            'birthday' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return $this->errorResponse($validator->errors(), 'اطلاعات ارسال شده درست نبوده است', 400);
+        if ($request->input('as_doctor') == true) {
+            $role = 'doctor';
+        } else {
+            $role = 'user';
         }
 
         $otp_class = new Otp();
@@ -113,22 +106,36 @@ class AuthController extends Controller
         if (!$check) {
             return $this->errorResponse('register', 'لطفا شماره موبایل خود را تایید کنید.', 400);
         }
-
+        $user_data = [
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'phone' => $request->input('phone'),
+            'password' => $request->input('password'),
+            'national_code' => $request->input('national_code'),
+            'code' => $request->input('code'),
+            'gender' => $request->input('gender'),
+            'birthday' => $request->input('birthday'),
+            // 'birthday' => now(),
+        ];
+        $doctor_data = [
+            'expertise_id' => $request->input('expertise_id'),
+            'date_start_treatment' => $request->input('date_start_treatment'),
+            // 'date_start_treatment' => now(),
+        ];
+        $office_data = [
+            'address' => $request->input('address'),
+            'office_phone' => $request->input('office_phone'),
+            'days_of_week' => $request->input('days_of_week'),
+            'appointments_number' => $request->input('appointments_number'),
+        ];
         $register_class = new Register();
         $registered_user = $register_class->registerNewUser(
-            $request->first_name,
-            $request->last_name,
-            $request->phone,
-            $request->password,
-            $request->national_code,
-            $request->gender,
-            $request->birthday,
-
+            $role,
+            $user_data,
+            $doctor_data,
+            $office_data
         );
-
         if ($registered_user) {
-
-
             $login_class = new Login;
             $token = $login_class->makeToken($request->phone);
             return $this->successResponse('registered', 'حساب کاربری ایجاد شد.', $token);

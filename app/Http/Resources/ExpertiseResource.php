@@ -21,6 +21,8 @@ class ExpertiseResource extends JsonResource
             'image' => $this->hasMedia('expertise') ? $this->getFirstMediaUrl('expertise') : null,
             // 'image' => $this->getFirstMedia('image')->first()->getFullUrl(),
             // {{ asset( $ex->getFirstMediaUrl('image'))  }}
+            'createdAt' => $this->created_at_shamsi,
+            'updatedAt' => $this->updated_at_shamsi,
         ];
     }
 }
