@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,6 +15,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('expertise_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamp('date_start_treatment');
+            $table->Text('address')->nullable();
+            $table->decimal('latitude', 10, 7)->nullable(); // اضافه کردن طول جغرافیایی
+            $table->decimal('longitude', 10, 7)->nullable(); // اضافه کردن عرض جغرافیایی
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

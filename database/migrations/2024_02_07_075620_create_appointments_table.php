@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,13 +12,13 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('office_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->timestamp('date');
-            // $table->json('time')->nullable();
-            $table->unsignedTinyInteger('number');
-            $table->boolean('status')->default(1);
+            $table->foreignId('doctor_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('doctor_schedule_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->timestamp('appointment_date_time');
+            $table->enum('status', ['Scheduled', 'Expired', 'Reserved'])->default('Scheduled');
             $table->timestamps();
+            // $table->unique(['doctor_id', 'appointment_date_time']);
         });
     }
 

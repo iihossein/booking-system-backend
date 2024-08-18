@@ -16,6 +16,16 @@ class Doctor extends Model
         'user_id',
         'expertise_id',
         'date_start_treatment',
+        'address',
+        'latitude',
+        'longitude',
+        'is_active',
+    ];
+    protected $casts = [
+        'date_start_treatment' => 'datetime',
+        'latitude' => 'decimal:7',
+        'longitude' => 'decimal:7',
+        'is_active' => 'boolean',
     ];
     public function scopeSearchByName($query, $name)
     {
@@ -30,19 +40,19 @@ class Doctor extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function office(): HasOne
+    public function schedules(): HasOne
     {
-        return $this->hasOne(Office::class);
-    }
-
-    public function expertise(): BelongsTo
-    {
-        return $this->belongsTo(Expertise::class);
+        return $this->hasOne(DoctorSchedule::class);
     }
 
     public function appointments(): HasMany
     {
         return $this->hasMany(Appointment::class);
+    }
+
+    public function expertise(): BelongsTo
+    {
+        return $this->belongsTo(Expertise::class);
     }
 
     public function receipts(): HasMany

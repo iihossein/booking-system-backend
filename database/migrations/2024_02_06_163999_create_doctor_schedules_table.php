@@ -10,22 +10,21 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('offices', function (Blueprint $table) {
+        Schema::create('doctor_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('doctor_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->longText('address');
-            $table->string('office_phone');
-            $table->string('days_of_week');
-            $table->tinyInteger('appointments_number');
+            $table->enum('day_of_week', ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday']);
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->integer('appointment_duration')->default(10);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('offices');
+        Schema::dropIfExists('doctor_schedules');
     }
 };

@@ -110,7 +110,7 @@ class AuthController extends Controller
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'phone' => $request->input('phone'),
-            'password' => $request->input('password'),
+            'password' => bcrypt($request->input('password')),
             'national_code' => $request->input('national_code'),
             'code' => $request->input('code'),
             'gender' => $request->input('gender'),
@@ -120,20 +120,12 @@ class AuthController extends Controller
         $doctor_data = [
             'expertise_id' => $request->input('expertise_id'),
             'date_start_treatment' => $request->input('date_start_treatment'),
-            // 'date_start_treatment' => now(),
-        ];
-        $office_data = [
-            'address' => $request->input('address'),
-            'office_phone' => $request->input('office_phone'),
-            'days_of_week' => $request->input('days_of_week'),
-            'appointments_number' => $request->input('appointments_number'),
         ];
         $register_class = new Register();
         $registered_user = $register_class->registerNewUser(
             $role,
             $user_data,
             $doctor_data,
-            $office_data
         );
         if ($registered_user) {
             $login_class = new Login;

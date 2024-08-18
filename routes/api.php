@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DoctorScheduleController;
 use App\Http\Controllers\ReviewController;
 
 use Illuminate\Http\Request;
@@ -34,6 +36,26 @@ Route::prefix('doctors')->group(function () {
     Route::get('/{id}', [DoctorController::class, 'show'])->name('doctor.show');
     Route::delete('/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
 });
+
+
+// doctorSchedules
+Route::prefix('doctorSchedules')->group(function () {
+    Route::get('/', [DoctorScheduleController::class, 'index'])->name('expertise.index');
+    Route::get('/{doctor_id}', [DoctorScheduleController::class, 'show'])->name('expertise.show');
+});
+Route::post('doctorSchedules/', [DoctorScheduleController::class, 'store'])->middleware('auth:sanctum');
+Route::put('doctorSchedules/{doctor_id}', [DoctorScheduleController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('doctorSchedules/{doctor_id}', [DoctorScheduleController::class, 'destroy'])->middleware('auth:sanctum');
+
+
+
+// Appointments
+Route::prefix('appointments')->group(function () {
+    Route::get('/', [AppointmentController::class, 'index'])->name('expertise.index');
+    Route::get('/{id}', [AppointmentController::class, 'show'])->name('expertise.show');
+});
+
+
 
 Route::prefix('reviews')->group(function () {
     Route::group(['middleware' => ['auth:sanctum']], function () {

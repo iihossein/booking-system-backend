@@ -33,11 +33,7 @@ class UserRequest extends FormRequest
                     'gender' => 'required',
                     'birthday' => 'required|date_format:Y/m/d',
                     'expertise_id' => 'required|integer|max:255',
-                    'date_start_treatment' => 'required|date_format:Y/m/d',
-                    'address' => 'required|string|max:255',
-                    'office_phone' => 'required|max:255',
-                    'days_of_week' => 'required|max:100',
-                    'appointments_number' => 'required|integer|max:100',
+                    'date_start_treatment' => 'required|date_format:Y',
                     'as_doctor' => 'required',
                 ];
             } else {
@@ -66,11 +62,7 @@ class UserRequest extends FormRequest
                     'gender' => 'nullable',
                     'birthday' => 'nullable',
                     'expertise_id' => 'nullable|integer|max:255',
-                    'date_start_treatment' => 'nullable|max:100',
-                    'address' => 'nullable|string|max:255',
-                    'office_phone' => 'nullable|max:255',
-                    'days_of_week' => 'nullable|max:100',
-                    'appointments_number' => 'nullable|integer|max:100',
+                    'date_start_treatment' => 'nullable|date_format:Y',
                     'as_doctor' => 'required',
                 ];
             } else {

@@ -1,0 +1,1208 @@
+{
+    "info": {
+        "_postman_id": "3619f432-9a67-4991-a7d9-ded5ca8416c1",
+        "name": "Visitech",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "auth/checkPassword",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988088&password=Hn13801380",
+                            "query": [
+                                {
+                                    "key": "phone",
+                                    "value": "09901988088"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "Hn13801380"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "auth",
+                                "checkPassword"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "auth/sendCode",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/auth/sendCode?phone=09901988088",
+                            "query": [
+                                {
+                                    "key": "phone",
+                                    "value": "09901988088"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "auth",
+                                "sendCode"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "auth/checkCode",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/auth/checkCode?phone=09901988088&code=4729",
+                            "query": [
+                                {
+                                    "key": "phone",
+                                    "value": "09901988088"
+                                },
+                                {
+                                    "key": "code",
+                                    "value": "4729"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "auth",
+                                "checkCode"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "auth/registerUser",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/auth/registerUser",
+                            "path": [
+                                "api",
+                                "auth",
+                                "registerUser"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "first_name",
+                                    "value": "حسین",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "last_name",
+                                    "value": "غلامی",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "09901988088",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "Hn13801380",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "national_code",
+                                    "value": "1363089436",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "code",
+                                    "value": "4972",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "gender",
+                                    "value": "0",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "birthday",
+                                    "value": "1368/08/16",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "expertise_id",
+                                    "value": "4",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "date_start_treatment",
+                                    "value": "1372",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "as_doctor",
+                                    "value": "true",
+                                    "type": "default"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "auth/logout",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/auth/logout",
+                            "query": [
+                                {
+                                    "key": "نیاز به توکن",
+                                    "value": "",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "auth",
+                                "logout"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "توکن فعلی رو اینجا قرار بده",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "http://127.0.0.1:8000/api/whoami",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/whoami",
+                            "query": [
+                                {
+                                    "key": "نیاز به توکن",
+                                    "value": "",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "whoami"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "نیاز به توکن",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Doctors",
+            "item": [
+                {
+                    "name": "/search",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/search/:name",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "name",
+                                    "value": "ه"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "search",
+                                ":name"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "doctors",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctors",
+                            "path": [
+                                "api",
+                                "doctors"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "doctor/{id}",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctors/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "4"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "doctors",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "doctor/{id}",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctors/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "4"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "doctors",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Expertises",
+            "item": [
+                {
+                    "name": "expertise/search/{id}",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/expertises/search/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "2"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "expertises",
+                                "search",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "expertises",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/expertises",
+                            "path": [
+                                "api",
+                                "expertises"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "expertises/{id}",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/expertises/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "2"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "expertises",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "expertises",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/expertises",
+                            "path": [
+                                "api",
+                                "expertises"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "مامایی",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "slug",
+                                    "value": "مامایی",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "3|a7d2Rw5xTXNZTaKoVBQbHVOwbBoNv4m2gY4q3Zj2ebb25113",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "expertises/{id}",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/expertises/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "6"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "expertises",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|uhjXE9LaXuCVHhaBf8EKI0kZ95ABKBvFEF8mgMCh6d379a4b",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "expertises/{id}",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/expertises/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "2"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "expertises",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "للللل",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "slug",
+                                    "value": "مامایی",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews",
+            "item": [
+                {
+                    "name": "reviews",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/reviews",
+                            "path": [
+                                "api",
+                                "reviews"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "user_id",
+                                    "value": "6",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "doctor_id",
+                                    "value": "13",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "text",
+                                    "value": "سلام دکتر خیلی خوبی هستند",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "rate",
+                                    "value": "4",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "reviews/{id}",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/reviews/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "201"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "reviews",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "user_id",
+                                    "value": "6",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "doctor_id",
+                                    "value": "13",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "text",
+                                    "value": "سلام دکتر خیلی خوبی هستند",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "rate",
+                                    "value": "4",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "reviews/{id}",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/reviews/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "201"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "reviews",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "reviews/{id}",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/reviews/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "124"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "reviews",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "reviews",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/reviews",
+                            "path": [
+                                "api",
+                                "reviews"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DoctorSchedules",
+            "item": [
+                {
+                    "name": "doctorSchedules",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctorSchedules",
+                            "path": [
+                                "api",
+                                "doctorSchedules"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Monday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "doctorSchedules/{doctor_id}",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctorSchedules/:doctor_id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "doctor_id",
+                                    "value": "32"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "doctorSchedules",
+                                ":doctor_id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "doctorSchedules/{doctor_id}",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctorSchedules/:doctor_id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "doctor_id",
+                                    "value": "32"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "doctorSchedules",
+                                ":doctor_id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "doctorSchedules/{doctor_id}",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctorSchedules/:doctor_id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "doctor_id",
+                                    "value": "2"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "doctorSchedules",
+                                ":doctor_id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "doctorSchedules",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/doctorSchedules/",
+                            "path": [
+                                "api",
+                                "doctorSchedules"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Appointments",
+            "item": [
+                {
+                    "name": "appointments",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/appointments/",
+                            "path": [
+                                "api",
+                                "appointments"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "appointments/{id}",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/appointments/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "355"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "appointments",
+                                ":id"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

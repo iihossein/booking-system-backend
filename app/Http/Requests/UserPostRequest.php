@@ -24,11 +24,7 @@ class UserPostRequest extends FormRequest
             'gender' => ['required'],
             'birthday' => ['required'],
             'expertise_id' => ['required', 'integer', 'max:255'],
-            'date_start_treatment' => ['required', 'max:100'],
-            'address' => ['required', 'string', 'max:255'],
-            'office_phone' => ['required', 'max:255'],
-            'days_of_week' => ['required', 'max:100'],
-            'appointments_number' => ['required', 'integer', 'max:100'],
+            'date_start_treatment' => ['required', 'date_format:Y'],
             'as_doctor' => ['required'],
         ];
 

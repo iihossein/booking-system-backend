@@ -22,20 +22,21 @@ class AppointmentRequest extends FormRequest
     public function rules(): array
     {
         if ($this->isMethod('post')) {
-            // اعتبارسنجی برای ایجاد پست جدید
             return [
-                'office_id' => 'required|integer|max:255',
-                'user_id' => 'required|integer|max:255',
-                'date' => 'required|max:255',
-                'number' => 'required|integer|max:100',
+                'doctor_id' => 'required|exists:doctors,id',
+                'user_id' => 'nullable|exists:users,id',
+                'doctor_schedule_id' => 'required|exists:doctor_schedules,id',
+                'appointment_date_time' => 'required|date',
+                'status' => 'required|in:Scheduled,Expired,Reserved',
             ];
-        } elseif ($this->isMethod('put')) {
-            // اعتبارسنجی برای ویرایش پست
+        }
+        if ($this->isMethod('put')) {
             return [
-                'office_id' => 'required|integer|max:255',
-                'user_id' => 'required|integer|max:255',
-                'date' => 'required|max:255',
-                'number' => 'required|integer|max:100',
+                'doctor_id' => 'required|exists:doctors,id',
+                'user_id' => 'nullable|exists:users,id',
+                'doctor_schedule_id' => 'required|exists:doctor_schedules,id',
+                'appointment_date_time' => 'required|date',
+                'status' => 'required|in:Scheduled,Expired,Reserved',
             ];
         } else {
             return [];

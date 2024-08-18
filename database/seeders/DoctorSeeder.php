@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Doctor;
 use App\Models\Office;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,10 @@ class DoctorSeeder extends Seeder
      */
     public function run(): void
     {
-        Doctor::factory()->count(30)->create();
+        for ($i = 1; $i < 31; $i++) {
+            Doctor::factory()->count(1)->create([
+                'user_id' => $i,
+            ]);
+        }
     }
 }

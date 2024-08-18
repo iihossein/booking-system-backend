@@ -29,12 +29,14 @@ class DoctorResource extends JsonResource
             'birthday' => $user->birthday_shamsi,
             'expertiseId' => $this->expertise_id,
             'dateStartTreatment' => $this->date_start_treatment_shamsi,
+            'address' => $this->address,
+            'latitude' => $this->latitude,
+            'longitude' => $this->latitude,
             'isActive' => $this->is_active,
             'createdAt' => $this->created_at_shamsi,
             'updatedAt' => $this->updated_at_shamsi,
-            // 'user' => new UserResource($this->user),
             'expertise' => new ExpertiseResource($this->expertise),
-            'office' => new OfficeResource($this->office),
+            'doctorSchedules' => DoctorScheduleResource::collection($this->reviews),
             'reviews' => ReviewResource::collection($this->reviews),
             'rateAvrage' => number_format(Review::where('doctor_id', $this->id)->avg('rate'), 1, '.', '')
         ];

@@ -25,10 +25,6 @@ class UserPutRequest extends FormRequest
                 'birthday' => ['nullable'],
                 'expertise_id' => ['nullable', 'integer', 'max:255'],
                 'date_start_treatment' => ['nullable', 'max:100'],
-                'address' => ['nullable', 'string', 'max:255'],
-                'office_phone' => ['nullable', 'max:255'],
-                'days_of_week' => ['nullable', 'max:100'],
-                'appointments_number' => ['nullable', 'integer', 'max:100'],
                 'as_doctor' => ['nullable'],
             ];
         } else {

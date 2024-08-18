@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Visitech",
-    "dateExported": "2024-08-09T13:18:47.867Z",
+    "dateExported": "2024-08-18T15:24:21.643Z",
     "version": "1.1",
     "folders": [
         {
@@ -38,6 +38,20 @@
             "containerId": "",
             "created": "2024-08-04T19:12:57.502Z",
             "sortNum": 50000
+        },
+        {
+            "_id": "b6592ae0-76b0-42f5-ba29-63ba98c863dc",
+            "name": "DoctorSchedules",
+            "containerId": "",
+            "created": "2024-08-18T07:17:35.363Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "5b63c40c-2680-46fd-b714-4a8f300221f5",
+            "name": "Appointments",
+            "containerId": "",
+            "created": "2024-08-18T15:03:42.729Z",
+            "sortNum": 70000
         }
     ],
     "requests": [
@@ -130,7 +144,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-08-02T07:24:37.049Z",
-            "modified": "2024-08-08T18:44:27.092Z",
+            "modified": "2024-08-18T06:56:04.992Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -154,10 +168,6 @@
                     "isPath": false
                 }
             ],
-            "auth": {
-                "type": "bearer",
-                "bearer": "7|C7JQonjp3RMEvzHGgFD7CK58L3ZpnQbcssBIUykc57d43671"
-            },
             "tests": []
         },
         {
@@ -169,7 +179,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-08-02T08:28:32.223Z",
-            "modified": "2024-08-09T12:07:47.443Z",
+            "modified": "2024-08-18T15:21:44.211Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -219,23 +229,7 @@
                     },
                     {
                         "name": "date_start_treatment",
-                        "value": "1372/11/05"
-                    },
-                    {
-                        "name": "address",
-                        "value": "تبریز چهارراه منصور برج ابریشم طبقه 7"
-                    },
-                    {
-                        "name": "office_phone",
-                        "value": "04137289426"
-                    },
-                    {
-                        "name": "days_of_week",
-                        "value": "1"
-                    },
-                    {
-                        "name": "appointments_number",
-                        "value": "20"
+                        "value": "1372"
                     },
                     {
                         "name": "as_doctor",
@@ -653,6 +647,208 @@
                 "type": "bearer",
                 "bearer": "1|uAKvWlag2jMEPrxSrVoyLSJYDEK8XgSQnmUO0ZC90299c04f"
             },
+            "tests": []
+        },
+        {
+            "_id": "e80cd966-4f35-459d-966a-48598db8333a",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "b6592ae0-76b0-42f5-ba29-63ba98c863dc",
+            "name": "doctorSchedules",
+            "url": "http://127.0.0.1:8000/api/doctorSchedules",
+            "method": "POST",
+            "sortNum": 150000,
+            "created": "2024-08-18T07:17:46.975Z",
+            "modified": "2024-08-18T07:17:46.975Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Monday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "97e256db-94ef-4757-88ef-c6c55ea0e531",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "b6592ae0-76b0-42f5-ba29-63ba98c863dc",
+            "name": "doctorSchedules/{doctor_id}",
+            "url": "http://127.0.0.1:8000/api/doctorSchedules/{doctor_id}",
+            "method": "PUT",
+            "sortNum": 160000,
+            "created": "2024-08-18T07:36:08.239Z",
+            "modified": "2024-08-18T07:36:08.240Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "doctor_id",
+                    "value": "32",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "928b2548-03fa-4d77-b3f7-8a853edc906e",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "b6592ae0-76b0-42f5-ba29-63ba98c863dc",
+            "name": "doctorSchedules/{doctor_id}",
+            "url": "http://127.0.0.1:8000/api/doctorSchedules/{doctor_id}",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-08-18T08:21:29.384Z",
+            "modified": "2024-08-18T08:21:29.384Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "doctor_id",
+                    "value": "32",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e242c13d-2172-459a-9d91-32c5f025aa0b",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "b6592ae0-76b0-42f5-ba29-63ba98c863dc",
+            "name": "doctorSchedules/{doctor_id}",
+            "url": "http://127.0.0.1:8000/api/doctorSchedules/{doctor_id}",
+            "method": "DELETE",
+            "sortNum": 180000,
+            "created": "2024-08-18T08:22:05.647Z",
+            "modified": "2024-08-18T08:22:05.647Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "doctor_id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0d8ffa95-889d-466a-aa7f-98714c435a22",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "b6592ae0-76b0-42f5-ba29-63ba98c863dc",
+            "name": "doctorSchedules",
+            "url": "http://127.0.0.1:8000/api/doctorSchedules/",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-08-18T08:23:06.453Z",
+            "modified": "2024-08-18T08:23:06.453Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d5a6369b-a56a-4ff0-8624-d6f72ee97c43",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "5b63c40c-2680-46fd-b714-4a8f300221f5",
+            "name": "appointments",
+            "url": "http://127.0.0.1:8000/api/appointments/",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-08-18T15:03:53.098Z",
+            "modified": "2024-08-18T15:03:53.098Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e5cecc92-76f4-4b96-828f-a3b9a0a107d0",
+            "colId": "86f44b4a-c548-46ad-a088-82eb55a008d1",
+            "containerId": "5b63c40c-2680-46fd-b714-4a8f300221f5",
+            "name": "appointments/{id}",
+            "url": "http://127.0.0.1:8000/api/appointments/{id}",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2024-08-18T15:08:20.593Z",
+            "modified": "2024-08-18T15:08:20.593Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "355",
+                    "isPath": true
+                }
+            ],
             "tests": []
         }
     ]

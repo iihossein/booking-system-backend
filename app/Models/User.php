@@ -24,11 +24,13 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
-        'phone',
         'password',
+        'phone',
         'national_code',
         'gender',
         'birthday',
+        'code',
+        'status',
     ];
 
     /**
@@ -47,8 +49,10 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'gender' => 'boolean',
         'birthday' => 'datetime',
-        'password' => 'hashed',
+        'status' => 'boolean',
+        'code' => 'integer',
     ];
 
     public function doctor(): HasOne
