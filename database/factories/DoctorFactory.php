@@ -24,6 +24,7 @@ class DoctorFactory extends Factory
             'expertise_id' => Expertise::inRandomOrder()->first()->id, // ساخت تخصص جدید و مرتبط کردن با دکتر
             'date_start_treatment' => $this->faker->dateTimeBetween('-30 years', 'now'), // تاریخ شروع درمان
             'address' => $this->faker->address, // آدرس تصادفی
+            'clinic_phone' => $this->faker->phoneNumber(),
             'latitude' => $this->faker->latitude, // طول جغرافیایی تصادفی
             'longitude' => $this->faker->longitude, // عرض جغرافیایی تصادفی
             'is_active' => $this->faker->boolean(90), // 90% شانس فعال بودن

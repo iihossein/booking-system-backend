@@ -30,6 +30,7 @@ class DoctorResource extends JsonResource
             'expertiseId' => $this->expertise_id,
             'dateStartTreatment' => $this->date_start_treatment_shamsi,
             'address' => $this->address,
+            'clinicPhone' => $this->clinic_phone,
             'latitude' => $this->latitude,
             'longitude' => $this->latitude,
             'isActive' => $this->is_active,

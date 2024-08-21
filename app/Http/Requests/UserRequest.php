@@ -34,6 +34,8 @@ class UserRequest extends FormRequest
                     'birthday' => 'required|date_format:Y/m/d',
                     'expertise_id' => 'required|integer|max:255',
                     'date_start_treatment' => 'required|date_format:Y',
+                    'address' => 'required|string',
+                    'clinic_phone' => 'nullable|string',
                     'as_doctor' => 'required',
                 ];
             } else {
@@ -63,6 +65,8 @@ class UserRequest extends FormRequest
                     'birthday' => 'nullable',
                     'expertise_id' => 'nullable|integer|max:255',
                     'date_start_treatment' => 'nullable|date_format:Y',
+                    'address' => 'required|string',
+                    'clinic_phone' => 'nullable|string',
                     'as_doctor' => 'required',
                 ];
             } else {
