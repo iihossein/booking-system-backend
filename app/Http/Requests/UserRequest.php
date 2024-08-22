@@ -21,8 +21,9 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+
         if ($this->isMethod('post')) {
-            if ($this->input('as_doctor') == true) {
+            if ($this->input('as_doctor')) {
                 return [
                     'first_name' => ['required', 'string'],
                     'last_name' => ['required', 'string'],
@@ -36,7 +37,7 @@ class UserRequest extends FormRequest
                     'date_start_treatment' => 'required|date_format:Y',
                     'address' => 'required|string',
                     'clinic_phone' => 'nullable|string',
-                    'as_doctor' => 'required',
+                    'as_doctor' => 'nullable|string',
                 ];
             } else {
                 return [
@@ -48,12 +49,12 @@ class UserRequest extends FormRequest
                     'code' => ['required', 'integer'],
                     'gender' => 'required',
                     'birthday' => 'required',
-                    'as_doctor' => 'required',
+                    'as_doctor' => 'nullable|string',
                 ];
             }
 
         } elseif ($this->isMethod('put')) {
-            if ($this->input('as_doctor') == true) {
+            if ($this->input('as_doctor')) {
                 return [
                     'first_name' => ['nullable', 'string'],
                     'last_name' => ['nullable', 'string'],
@@ -67,7 +68,7 @@ class UserRequest extends FormRequest
                     'date_start_treatment' => 'nullable|date_format:Y',
                     'address' => 'required|string',
                     'clinic_phone' => 'nullable|string',
-                    'as_doctor' => 'required',
+                    'as_doctor' => 'nullable|string',
                 ];
             } else {
                 return [
@@ -79,7 +80,7 @@ class UserRequest extends FormRequest
                     'code' => ['nullable', 'integer'],
                     'gender' => 'nullable',
                     'birthday' => 'nullable',
-                    'as_doctor' => 'required',
+                    'as_doctor' => 'nullable|string',
                 ];
             }
         } else {

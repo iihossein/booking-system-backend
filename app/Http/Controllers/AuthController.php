@@ -94,7 +94,7 @@ class AuthController extends Controller
 
     public function registerUser(UserRequest $request)
     {
-        if ($request->input('as_doctor') == true) {
+        if ($request->has('as_doctor')) {
             $role = 'doctor';
         } else {
             $role = 'user';
