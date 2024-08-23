@@ -88,7 +88,7 @@ Route::post('auth/resetPassword', [AuthController::class, 'resetPassword']);
 
 
 // Protected routes
-Route::group(['middleware' => ['auth:sanctum', 'sanctum.auth']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::get('whoami', [UserController::class, 'whoami']);
 });
