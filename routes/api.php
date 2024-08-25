@@ -15,7 +15,6 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\ExpertiseController;
 
 
-
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
@@ -104,4 +103,12 @@ Route::get('401', function () {
 })->name('401');
 
 Route::get("/", [HomeController::class, 'index']);
+Route::fallback(function () {
+    $data = [
+        'message' => "notFound",
+        'errorCode' => "404"
+    ];
+    return response()->json($data, 404);
+});
+
 
