@@ -39,8 +39,8 @@ Route::prefix('doctors')->group(function () {
 
 // doctorSchedules
 Route::prefix('doctorSchedules')->group(function () {
-    Route::get('/', [DoctorScheduleController::class, 'index'])->name('expertise.index');
-    Route::get('/{doctor_id}', [DoctorScheduleController::class, 'show'])->name('expertise.show');
+    Route::get('/', [DoctorScheduleController::class, 'index']);
+    Route::get('/{doctor_id}', [DoctorScheduleController::class, 'show']);
 });
 Route::post('doctorSchedules/', [DoctorScheduleController::class, 'store'])->middleware('auth:sanctum');
 Route::put('doctorSchedules/{doctor_id}', [DoctorScheduleController::class, 'update'])->middleware('auth:sanctum');
@@ -50,8 +50,8 @@ Route::delete('doctorSchedules/{doctor_id}', [DoctorScheduleController::class, '
 
 // Appointments
 Route::prefix('appointments')->group(function () {
-    Route::get('/', [AppointmentController::class, 'index'])->name('expertise.index');
-    Route::get('/{id}', [AppointmentController::class, 'show'])->name('expertise.show');
+    Route::get('/', [AppointmentController::class, 'index']);
+    Route::get('/{id}', [AppointmentController::class, 'show']);
 });
 
 
@@ -103,12 +103,6 @@ Route::get('401', function () {
 })->name('401');
 
 Route::get("/", [HomeController::class, 'index']);
-Route::fallback(function () {
-    $data = [
-        'message' => "notFound",
-        'errorCode' => "404"
-    ];
-    return response()->json($data, 404);
-});
+
 
 
