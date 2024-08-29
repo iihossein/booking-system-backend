@@ -25,7 +25,7 @@ class DoctorResource extends JsonResource
             'lastName' => $user->last_name,
             'phone' => $user->phone,
             'nationalCode' => $user->national_code,
-            'gender' => $user->gender,
+            'gender' => $user->gender == 0 ? 'مرد' : 'زن',
             'birthday' => $user->birthday_shamsi,
             'expertiseId' => $this->expertise_id,
             'dateStartTreatment' => $this->date_start_treatment_shamsi,

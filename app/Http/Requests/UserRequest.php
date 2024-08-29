@@ -63,7 +63,7 @@ class UserRequest extends FormRequest
                     'national_code' => ['nullable', 'min:5', 'integer'],
                     'code' => ['nullable', 'integer'],
                     'gender' => 'nullable',
-                    'birthday' => 'nullable',
+                    'birthday' => 'nullable|date_format:Y/m/d',
                     'expertise_id' => 'nullable|integer|max:255',
                     'date_start_treatment' => 'nullable|date_format:Y',
                     'address' => 'required|string',

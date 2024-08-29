@@ -6,7 +6,6 @@ use App\Http\Controllers\ReviewController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SmsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
@@ -19,16 +18,18 @@ use App\Http\Controllers\ExpertiseController;
 //     return $request->user();
 // });
 
-// Expertises
-Route::prefix('expertises')->group(function () {
-    Route::get('/', [ExpertiseController::class, 'index'])->name('expertise.index');
-    Route::get('/{id}', [ExpertiseController::class, 'show'])->name('expertise.show');
-    Route::get('/search/{id}', [ExpertiseController::class, 'search']);
-});
-Route::post('expertises/', [ExpertiseController::class, 'store'])->middleware('auth:sanctum');
-Route::put('expertises/{id}', [ExpertiseController::class, 'update'])->middleware('auth:sanctum');
-Route::delete('expertises/{id}', [ExpertiseController::class, 'destroy'])->middleware('auth:sanctum');
 
+Route::prefix('expertises')->group(function () {
+    Route::get('/', [ExpertiseController::class, 'index']);
+    Route::get('/{id}', [ExpertiseController::class, 'show']);
+    Route::get('/search/{id}', [ExpertiseController::class, 'search']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/', [ExpertiseController::class, 'store']);
+        Route::put('/{id}', [ExpertiseController::class, 'update']);
+        Route::delete('/{id}', [ExpertiseController::class, 'destroy']);
+    });
+});
 
 Route::prefix('doctors')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
@@ -37,15 +38,17 @@ Route::prefix('doctors')->group(function () {
 });
 
 
-// doctorSchedules
+// DoctorSchedules
 Route::prefix('doctorSchedules')->group(function () {
     Route::get('/', [DoctorScheduleController::class, 'index']);
     Route::get('/{doctor_id}', [DoctorScheduleController::class, 'show']);
-});
-Route::post('doctorSchedules/', [DoctorScheduleController::class, 'store'])->middleware('auth:sanctum');
-Route::put('doctorSchedules/{doctor_id}', [DoctorScheduleController::class, 'update'])->middleware('auth:sanctum');
-Route::delete('doctorSchedules/{doctor_id}', [DoctorScheduleController::class, 'destroy'])->middleware('auth:sanctum');
 
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/', [DoctorScheduleController::class, 'store']);
+        Route::put('/{doctor_id}', [DoctorScheduleController::class, 'update']);
+        Route::delete('/{doctor_id}', [DoctorScheduleController::class, 'destroy']);
+    });
+});
 
 
 // Appointments
@@ -57,13 +60,14 @@ Route::prefix('appointments')->group(function () {
 
 
 Route::prefix('reviews')->group(function () {
-    Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/{id}', [ReviewController::class, 'show'])->name('review.show');
+
+    Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [ReviewController::class, 'store']);
         Route::put('/{id}', [ReviewController::class, 'update']);
         Route::delete('/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
     });
-    Route::get('/', [ReviewController::class, 'index'])->name('review.index');
-    Route::get('/{id}', [ReviewController::class, 'show'])->name('review.show');
 });
 
 
@@ -73,12 +77,14 @@ Route::get('/search/{name}', [PageController::class, 'search']);
 
 
 // Auth
-Route::post('auth/sendCode', [AuthController::class, 'sendCode']);
-Route::post('auth/checkCode', [AuthController::class, 'checkCode']);
-Route::post('auth/checkPassword', [AuthController::class, 'checkPassword']);
-Route::post('auth/registerUser', [AuthController::class, 'registerUser']);
-Route::post('auth/changePassword', [AuthController::class, 'changePassword']);
-Route::post('auth/resetPassword', [AuthController::class, 'resetPassword']);
+Route::prefix('auth')->group(function () {
+    Route::post('sendCode', [AuthController::class, 'sendCode']);
+    Route::post('checkCode', [AuthController::class, 'checkCode']);
+    Route::post('checkPassword', [AuthController::class, 'checkPassword']);
+    Route::post('registerUser', [AuthController::class, 'registerUser']);
+    Route::post('changePassword', [AuthController::class, 'changePassword']);
+    Route::post('resetPassword', [AuthController::class, 'resetPassword']);
+});
 
 
 
@@ -103,6 +109,7 @@ Route::get('401', function () {
 })->name('401');
 
 Route::get("/", [HomeController::class, 'index']);
+
 
 
 
