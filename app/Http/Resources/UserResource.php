@@ -14,6 +14,7 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $roles = $this->getRoleNames();
         return [
             'id' => $this->id,
             'firstName' => $this->first_name,
@@ -24,6 +25,7 @@ class UserResource extends JsonResource
             'birthday' => $this->birthday_shamsi,
             'code' => $this->code,
             'status' => $this->status == 1 ? 'active' : 'inactive',
+            'roles' => $roles,
             'createdAt' => $this->created_at_shamsi,
             'updatedAt' => $this->updated_at_shamsi,
         ];

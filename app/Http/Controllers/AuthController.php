@@ -97,7 +97,7 @@ class AuthController extends Controller
         if ($request->has('as_doctor')) {
             $role = 'doctor';
         } else {
-            $role = 'user';
+            $role = 'patient';
         }
 
         $otp_class = new Otp();
@@ -115,7 +115,6 @@ class AuthController extends Controller
             'code' => $request->input('code'),
             'gender' => $request->input('gender'),
             'birthday' => $request->input('birthday'),
-            // 'birthday' => now(),
         ];
         $doctor_data = [
             'expertise_id' => $request->input('expertise_id'),

@@ -24,7 +24,7 @@ Route::prefix('expertises')->group(function () {
     Route::get('/{id}', [ExpertiseController::class, 'show']);
     Route::get('/search/{id}', [ExpertiseController::class, 'search']);
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', 'role:administrator'])->group(function () {
         Route::post('/', [ExpertiseController::class, 'store']);
         Route::put('/{id}', [ExpertiseController::class, 'update']);
         Route::delete('/{id}', [ExpertiseController::class, 'destroy']);
@@ -43,7 +43,7 @@ Route::prefix('doctorSchedules')->group(function () {
     Route::get('/', [DoctorScheduleController::class, 'index']);
     Route::get('/{doctor_id}', [DoctorScheduleController::class, 'show']);
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', 'role:administrator|doctor'])->group(function () {
         Route::post('/', [DoctorScheduleController::class, 'store']);
         Route::put('/{doctor_id}', [DoctorScheduleController::class, 'update']);
         Route::delete('/{doctor_id}', [DoctorScheduleController::class, 'destroy']);
