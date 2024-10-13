@@ -55,6 +55,10 @@ Route::prefix('doctorSchedules')->group(function () {
 Route::prefix('appointments')->group(function () {
     Route::get('/', [AppointmentController::class, 'index']);
     Route::get('/{id}', [AppointmentController::class, 'show']);
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::post('/book', [AppointmentController::class, 'book'])->name('appointments.book');
+        Route::post('/cancel', [AppointmentController::class, 'cancel'])->name('appointments.cancel');
+    });
 });
 
 

@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "2a467be5-88e3-4b58-8def-c0b73e24ea4c",
+        "_postman_id": "3d3470fc-832e-44dd-8c63-205dcdd01cd9",
         "name": "Visitech",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -187,26 +187,31 @@
                                 {
                                     "key": "expertise_id",
                                     "value": "4",
+                                    "disabled": true,
                                     "type": "default"
                                 },
                                 {
                                     "key": "date_start_treatment",
                                     "value": "1372",
+                                    "disabled": true,
                                     "type": "default"
                                 },
                                 {
                                     "key": "address",
                                     "value": "تبریز چهارراه منصور برج ابریشم طبقه 3 پلاک 27",
+                                    "disabled": true,
                                     "type": "default"
                                 },
                                 {
                                     "key": "clinic_phone",
                                     "value": "04135462864",
+                                    "disabled": true,
                                     "type": "default"
                                 },
                                 {
                                     "key": "as_doctor",
                                     "value": "true",
+                                    "disabled": true,
                                     "type": "default"
                                 }
                             ]
@@ -301,7 +306,7 @@
                             "bearer": [
                                 {
                                     "key": "token",
-                                    "value": "نیاز به توکن",
+                                    "value": "4|EoIe9LmlYyaUhxekdS26J1PWF0Ef47bvlFgDGZYA1ba5981a",
                                     "type": "string"
                                 }
                             ]
@@ -545,7 +550,7 @@
                             "bearer": [
                                 {
                                     "key": "token",
-                                    "value": "3|a7d2Rw5xTXNZTaKoVBQbHVOwbBoNv4m2gY4q3Zj2ebb25113",
+                                    "value": "3|wIMU8bymjobjrb4fCKDL5tUEq6mHb3LAopE1lTvU0131fed9",
                                     "type": "string"
                                 }
                             ]
@@ -923,7 +928,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Monday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                            "raw": "{\n    \"schedules\": [\n        {\n            \"day_of_week\": \"Saturday\",\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"12:00:00\",\n            \"appointment_duration\": 30\n        },\n        {\n            \"day_of_week\": \"Monday\",\n            \"start_time\": \"14:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"appointment_duration\": 20\n        }\n    ]\n}\n"
                         },
                         "auth": {
                             "type": "bearer",
@@ -1001,7 +1006,7 @@
                             "variable": [
                                 {
                                     "key": "doctor_id",
-                                    "value": "32"
+                                    "value": "1"
                                 }
                             ],
                             "path": [
@@ -1031,7 +1036,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                            "raw": "{\n    \"schedules\": [\n        {\n            \"day_of_week\": \"Saturday\",\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"12:00:00\",\n            \"appointment_duration\": 30\n        },\n        {\n            \"day_of_week\": \"Wednesday\",\n            \"start_time\": \"14:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"appointment_duration\": 20\n        }\n    ]\n}\n"
                         },
                         "auth": {
                             "type": "bearer",
@@ -1131,7 +1136,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n"
+                            "raw": "{\n    \"schedules\": [\n        {\n            \"day_of_week\": \"Saturday\",\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"12:00:00\",\n            \"appointment_duration\": 30\n        },\n        {\n            \"day_of_week\": \"Wednesday\",\n            \"start_time\": \"14:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"appointment_duration\": 20\n        }\n    ]\n}\n"
                         },
                         "auth": {
                             "type": "bearer",
@@ -1210,6 +1215,90 @@
                                 "value": "application/json"
                             }
                         ]
+                    }
+                },
+                {
+                    "name": "book",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/appointments/book",
+                            "path": [
+                                "api",
+                                "appointments",
+                                "book"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "appointment_id",
+                                    "value": "4",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "5|NTTU0F1OcRBngKVKb78DCHYkVq6mC6u1is5BOcxuac2e5d33",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "cancel",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/api/appointments/cancel",
+                            "path": [
+                                "api",
+                                "appointments",
+                                "cancel"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "appointment_id",
+                                    "value": "4",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "5|NTTU0F1OcRBngKVKb78DCHYkVq6mC6u1is5BOcxuac2e5d33",
+                                    "type": "string"
+                                }
+                            ]
+                        }
                     }
                 }
             ]

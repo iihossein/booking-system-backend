@@ -47,12 +47,12 @@ class DoctorSchedule extends Model
     public function getStartTimeShamsiAttribute()
     {
         $start_time = $this->attributes['start_time'];
-        return Verta::instance($start_time)->format('Y/m/d H:i:s');
+        return Verta::instance($start_time)->format('H:i:s');
     }
     public function getEndTimeShamsiAttribute()
     {
         $end_time = $this->attributes['end_time'];
-        return Verta::instance($end_time)->format('Y/m/d H:i:s');
+        return Verta::instance($end_time)->format('H:i:s');
     }
     // protected $dates = ['birthday'];
     // public function setStartTimeAttribute($value)
