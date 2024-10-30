@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DoctorScheduleRequest;
+use App\Http\Resources\AppointmentResource;
 use App\Http\Resources\DoctorScheduleResource;
 use App\Models\Doctor;
 use App\Models\DoctorSchedule;
 use App\Http\Requests\StoreDoctorScheduleRequest;
 use App\Http\Requests\UpdateDoctorScheduleRequest;
+use App\Models\Appointment;
 use App\Traits\HttpResponses;
 use Carbon\Carbon;
 
@@ -120,5 +122,10 @@ class DoctorScheduleController extends Controller
         } else {
             return $this->errorResponse('creatation failed', 'مشکلی در حین حذف کردن زمان بندی نوبت دهی پیش امد لطفا یک بار دیگر تلاش کنید', 400);
         }
+    }
+    function getAppointmentsForSchedule($schedule_id)
+    {
+        $appointments = Appointment::where('doctor_schedule_id', $schedule_id)->get();
+        return AppointmentResource::collection($appointments);
     }
 }

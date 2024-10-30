@@ -42,6 +42,7 @@ Route::prefix('doctors')->group(function () {
 Route::prefix('doctorSchedules')->group(function () {
     Route::get('/', [DoctorScheduleController::class, 'index']);
     Route::get('/{doctor_id}', [DoctorScheduleController::class, 'show']);
+    Route::get('/{schedule_id}/appointments', [DoctorScheduleController::class, 'getAppointmentsForSchedule']);
 
     Route::middleware(['auth:sanctum', 'role:administrator|doctor'])->group(function () {
         Route::post('/', [DoctorScheduleController::class, 'store']);

@@ -37,8 +37,6 @@ class DoctorResource extends JsonResource
             'createdAt' => $this->created_at_shamsi,
             'updatedAt' => $this->updated_at_shamsi,
             'expertise' => new ExpertiseResource($this->expertise),
-            'doctorSchedules' => DoctorScheduleResource::collection($this->reviews),
-            'reviews' => ReviewResource::collection($this->reviews),
             'rateAvrage' => number_format(Review::where('doctor_id', $this->id)->avg('rate'), 1, '.', '')
         ];
     }
