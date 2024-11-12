@@ -35,6 +35,7 @@ Route::prefix('doctors')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
     Route::get('/{id}', [DoctorController::class, 'show'])->name('doctor.show');
     Route::delete('/{id}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+    Route::get('/{doctor_id}/reviews', [DoctorController::class, 'getReviewsForDoctor']);
 });
 
 

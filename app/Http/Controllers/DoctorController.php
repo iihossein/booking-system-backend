@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DoctorRequest;
 use App\Http\Requests\SearchRequest;
 use App\Http\Resources\DoctorResource;
+use App\Http\Resources\ReviewResource;
 use App\Models\Doctor;
+use App\Models\Review;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
 
@@ -67,6 +69,11 @@ class DoctorController extends Controller
         } else {
             return $this->errorResponse('creatation failed', 'مشکلی در حین حذف کردن دکتر پیش امد لطفا یک بار دیگر تلاش کنید', 400);
         }
+    }
+    function getReviewsForDoctor($doctor_id)
+    {
+        $reviews = Review::where('doctor_id', $doctor_id)->get();
+        return ReviewResource::collection($reviews);
     }
 
 
