@@ -14,8 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('doctor_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('day_of_week', ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday']);
+            $table->date('schedule_date');
             $table->time('start_time');
             $table->time('end_time');
+            $table->unsignedBigInteger('cost')->default('90000');
             $table->integer('appointment_duration')->default(10);
             $table->timestamps();
         });

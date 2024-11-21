@@ -173,32 +173,27 @@
 								{
 									"key": "expertise_id",
 									"value": "4",
-									"type": "default",
-									"disabled": true
+									"type": "default"
 								},
 								{
 									"key": "date_start_treatment",
 									"value": "1372",
-									"type": "default",
-									"disabled": true
+									"type": "default"
 								},
 								{
 									"key": "address",
 									"value": "تبریز چهارراه منصور برج ابریشم طبقه 3 پلاک 27",
-									"type": "default",
-									"disabled": true
+									"type": "default"
 								},
 								{
 									"key": "clinic_phone",
 									"value": "04135462864",
-									"type": "default",
-									"disabled": true
+									"type": "default"
 								},
 								{
 									"key": "as_doctor",
 									"value": "true",
-									"type": "default",
-									"disabled": true
+									"type": "default"
 								}
 							]
 						},
@@ -926,7 +921,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+									"value": "1|y9Qgjfs5bO6EYPRgkptK5vVJpU4bW8nyFXOxeL01609acc0f",
 									"type": "string"
 								}
 							]
@@ -940,7 +935,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedules\": [\n        {\n            \"day_of_week\": \"Saturday\",\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"12:00:00\",\n            \"appointment_duration\": 30\n        },\n        {\n            \"day_of_week\": \"Monday\",\n            \"start_time\": \"14:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"appointment_duration\": 20\n        }\n    ]\n}\n",
+							"raw": "{\n    \"schedules\": [\n        {\n            \"day_of_week\": \"Saturday\",\n            \"start_time\": \"08:00:00\",\n            \"end_time\": \"12:00:00\",\n            \"appointment_duration\": 30,\n            \"cost\": 120000\n        },\n        {\n            \"day_of_week\": \"Monday\",\n            \"start_time\": \"14:00:00\",\n            \"end_time\": \"18:00:00\",\n            \"appointment_duration\": 20,\n            \"cost\": 200000\n        }\n    ]\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -973,7 +968,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|19Zd4fUa4gJlm2vAV7YiYJLpyeLNXlOj2T207nSa95bd828b",
+									"value": "1|y9Qgjfs5bO6EYPRgkptK5vVJpU4bW8nyFXOxeL01609acc0f",
 									"type": "string"
 								}
 							]
@@ -987,7 +982,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20\r\n        }\r\n    ]\r\n}\r\n",
+							"raw": "{\r\n    \"schedules\": [\r\n        {\r\n            \"day_of_week\": \"Saturday\",\r\n            \"start_time\": \"08:00:00\",\r\n            \"end_time\": \"12:00:00\",\r\n            \"appointment_duration\": 30,\r\n            \"cost\":120000\r\n        },\r\n        {\r\n            \"day_of_week\": \"Wednesday\",\r\n            \"start_time\": \"14:00:00\",\r\n            \"end_time\": \"18:00:00\",\r\n            \"appointment_duration\": 20,\r\n            \"cost\": 200000\r\n        }\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1012,7 +1007,7 @@
 							"variable": [
 								{
 									"key": "doctor_id",
-									"value": "32"
+									"value": "31"
 								}
 							]
 						}

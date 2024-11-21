@@ -28,15 +28,18 @@ class DoctorScheduleRequest extends FormRequest
                 'schedules.*.start_time' => 'nullable|date_format:H:i:s',
                 'schedules.*.end_time' => 'nullable|date_format:H:i:s|after:schedules.*.start_time',
                 'schedules.*.appointment_duration' => 'nullable|integer|min:1',
+                'schedules.*.cost' => 'nullable|integer',
             ];
         }
         if ($this->isMethod('put')) {
             return [
                 'schedules' => 'array|required',
                 'schedules.*.day_of_week' => 'required|string|in:Saturday,Sunday,Monday,Tuesday,Wednesday,Thursday',
+                'schedules.*.schedule_date' => 'nullable|date_format:Y:m:d',
                 'schedules.*.start_time' => 'nullable|date_format:H:i:s',
                 'schedules.*.end_time' => 'nullable|date_format:H:i:s|after:schedules.*.start_time',
                 'schedules.*.appointment_duration' => 'nullable|integer|min:1',
+                'schedules.*.cost' => 'nullable|integer',
             ];
         } else {
             return [];

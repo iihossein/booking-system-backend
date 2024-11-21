@@ -21,39 +21,33 @@ class GenerateWeeklyAppointments extends Command
      *
      * @var string
      */
-    protected $description = 'Artisan command to generate weekly appointments';
+    protected $description = 'Artisan command to generate weekly appointments and update schedules dynamically';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        // دریافت تاریخ‌های هفته قبل
-        $lastWeekStart = Carbon::now()->previous('Saturday')->startOfDay();
-        $lastWeekEnd = $lastWeekStart->copy()->addDays(6)->endOfDay();
-
-        // پیدا کردن و تغییر وضعیت نوبت‌های هفته قبل به Expired
-        Appointment::whereBetween('appointment_date_time', [$lastWeekStart, $lastWeekEnd])
-            ->update(['status' => 'Expired']);
-
         // دریافت تاریخ‌های هفته آینده
         $nextWeekStart = Carbon::now()->next('Saturday')->startOfDay();
-        $nextWeekEnd = $nextWeekStart->copy()->addDays(6)->endOfDay();
 
         // دریافت همه‌ی اسکجول‌های پزشکان
         $schedules = DoctorSchedule::all();
 
         foreach ($schedules as $schedule) {
-            // زمان شروع و پایان روز مربوطه
-            $dayOfWeek = $nextWeekStart->copy()->next($schedule->day_of_week);
-            $startTime = Carbon::parse($dayOfWeek->format('Y-m-d') . ' ' . $schedule->start_time);
-            $endTime = Carbon::parse($dayOfWeek->format('Y-m-d') . ' ' . $schedule->end_time);
+            // تاریخ داینامیک برای روز خاص هفته
+            $scheduleDate = $nextWeekStart->copy()->next($schedule->day_of_week)->format('Y-m-d');
 
-            // دریافت duration از اسکجول پزشک
+            // آپدیت ستون تاریخ در جدول زمان‌بندی
+            $schedule->update([
+                'schedule_date' => $scheduleDate,
+            ]);
+
+            // تولید نوبت‌ها مشابه کد قبلی
+            $startTime = Carbon::parse($scheduleDate . ' ' . $schedule->start_time);
+            $endTime = Carbon::parse($scheduleDate . ' ' . $schedule->end_time);
             $appointmentDuration = $schedule->appointment_duration;
 
-            // dd($startTime->format('Y-m-d H:i:s'));
-            // تولید نوبت‌ها در بازه‌ی زمانی مشخص شده
             while ($startTime->lessThan($endTime)) {
                 Appointment::create([
                     'doctor_id' => $schedule->doctor_id,
@@ -66,6 +60,7 @@ class GenerateWeeklyAppointments extends Command
             }
         }
 
-        echo ('Weekly appointments generated successfully.');
+        // پیام موفقیت
+        $this->info('Weekly appointments generated successfully.');
     }
 }

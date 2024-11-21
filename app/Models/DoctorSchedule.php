@@ -14,10 +14,12 @@ class DoctorSchedule extends Model
     protected $fillable = [
         'doctor_id',
         'day_of_week',
+        'schedule_date',
         'start_time',
         'end_time',
         'max_patients_per_day',
         'appointment_duration',
+        'cost',
     ];
     protected $casts = [
         // 'start_time' => 'datetime:H:i:s', // تبدیل زمان به شیء DateTime
@@ -44,6 +46,12 @@ class DoctorSchedule extends Model
         $updated_at = $this->attributes['updated_at'];
         return Verta::instance($updated_at)->format('Y/m/d H:i:s');
     }
+    public function getScheduleDateShamsiAttribute()
+    {
+        $schedule_date = $this->attributes['schedule_date'];
+        return Verta::instance($schedule_date)->format('Y/m/d');
+    }
+
     public function getStartTimeShamsiAttribute()
     {
         $start_time = $this->attributes['start_time'];

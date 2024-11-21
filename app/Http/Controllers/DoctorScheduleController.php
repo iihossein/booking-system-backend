@@ -36,12 +36,16 @@ class DoctorScheduleController extends Controller
             foreach ($request->schedules as $scheduleData) {
                 // اگر برای یک روز خاص زمان شروع یا پایان وجود داشته باشد، رکورد جدید ایجاد می‌کنیم
                 if (!is_null($scheduleData['start_time']) && !is_null($scheduleData['end_time'])) {
+                    $nextWeekStart = Carbon::now()->next('Saturday')->startOfDay();
+
                     DoctorSchedule::create([
                         'doctor_id' => $doctor->id,
                         'day_of_week' => $scheduleData['day_of_week'],
+                        'schedule_date' => $nextWeekStart->copy()->next($scheduleData['day_of_week'])->format('Y-m-d'),
                         'start_time' => $scheduleData['start_time'],
                         'end_time' => $scheduleData['end_time'],
                         'appointment_duration' => $scheduleData['appointment_duration'],
+                        'cost' => $scheduleData['cost'],
                     ]);
                 }
             }
@@ -90,6 +94,8 @@ class DoctorScheduleController extends Controller
         // به‌روزرسانی یا ایجاد زمان‌بندی‌های جدید
         foreach ($request->schedules as $scheduleData) {
             if (!is_null($scheduleData['start_time']) && !is_null($scheduleData['end_time'])) {
+                $nextWeekStart = Carbon::now()->next('Saturday')->startOfDay();
+
                 $schedule = DoctorSchedule::updateOrCreate(
                     [
                         'doctor_id' => $doctor->id,
@@ -99,6 +105,8 @@ class DoctorScheduleController extends Controller
                         'start_time' => $scheduleData['start_time'],
                         'end_time' => $scheduleData['end_time'],
                         'appointment_duration' => $scheduleData['appointment_duration'],
+                        'schedule_date' => $nextWeekStart->copy()->next($scheduleData['day_of_week'])->format('Y-m-d'),
+                        'cost' => $scheduleData['cost'],
                     ]
                 );
             }
