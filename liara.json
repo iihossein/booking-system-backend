@@ -1,0 +1,12 @@
+{
+    "laravel": {
+      "phpVersion": "8.1",
+      "mirror": true,
+      "buildAssets": false,
+      "installDevDependencies": true,
+      "configCache": true,
+      "routeCache": true
+
+
+  }
+}
