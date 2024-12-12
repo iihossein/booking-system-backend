@@ -72,8 +72,8 @@ class ExpertiseSeeder extends Seeder
                 'name' => $expertise['name'],
             ]);
 
-            $expertiseModel->addMedia(public_path('images/' . $expertise['image']))
-                ->toMediaCollection('expertise');
+            // $expertiseModel->addMedia(public_path('images/' . $expertise['image']))
+            //     ->toMediaCollection('expertise');
         }
     }
 }

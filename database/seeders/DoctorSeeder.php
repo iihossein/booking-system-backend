@@ -15,7 +15,7 @@ class DoctorSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i < 31; $i++) {
+        for ($i = 1; $i < 11; $i++) {
             Doctor::factory()->count(1)->create([
                 'user_id' => $i,
             ]);

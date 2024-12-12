@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AppointmentResource;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\WhoamiResource;
+use App\Models\Appointment;
 use App\Models\User;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
@@ -28,5 +30,10 @@ class UserController extends Controller
     {
         $user = auth()->user();
         return new UserResource($user);
+    }
+    function getAppointmentsForUser($user_id)
+    {
+        $appointments = Appointment::where('user_id',$user_id)->get();
+        return AppointmentResource::collection($appointments);
     }
 }

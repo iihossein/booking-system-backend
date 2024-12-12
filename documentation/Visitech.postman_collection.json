@@ -10,50 +10,6 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "auth/checkPassword",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "User-Agent",
-								"value": "Thunder Client (https://www.thunderclient.com)",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988088&password=Hn13801380",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"auth",
-								"checkPassword"
-							],
-							"query": [
-								{
-									"key": "phone",
-									"value": "09901988088"
-								},
-								{
-									"key": "password",
-									"value": "Hn13801380"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "auth/sendCode",
 					"request": {
 						"method": "POST",
@@ -111,6 +67,50 @@
 								{
 									"key": "code",
 									"value": "4729"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/checkPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Thunder Client (https://www.thunderclient.com)",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/checkPassword?phone=09901988088&password=Hn13801380",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"checkPassword"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": "09901988088"
+								},
+								{
+									"key": "password",
+									"value": "Hn13801380"
 								}
 							]
 						}
@@ -263,7 +263,7 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "http://127.0.0.1:8000/api/whoami",
+					"name": "whoami",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -306,6 +306,37 @@
 									"key": "نیاز به توکن",
 									"value": "",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get appointments for user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/:user_id/appointments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								":user_id",
+								"appointments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": ""
 								}
 							]
 						}
@@ -424,6 +455,36 @@
 								{
 									"key": "id",
 									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reviews for doctor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/:doctor_id/reviews",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								":doctor_id",
+								"reviews"
+							],
+							"variable": [
+								{
+									"key": "doctor_id",
+									"value": ""
 								}
 							]
 						}

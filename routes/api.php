@@ -13,10 +13,15 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\ExpertiseController;
 
-
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::prefix('user')->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/{user_id}/appointments',[UserController::class,'getAppointmentsForUser']);
+    });
+});
 
 
 Route::prefix('expertises')->group(function () {
@@ -115,6 +120,8 @@ Route::get('401', function () {
 })->name('401');
 
 Route::get("/", [HomeController::class, 'index']);
+
+
 
 
 
